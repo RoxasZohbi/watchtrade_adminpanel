@@ -4067,13 +4067,13 @@ a.default-btn {
 
 .modal-dialog {
   margin: 8% auto;
-  max-width: 960px;
-  width: 960px;
+  max-width: 620px;
+  width: 620px;
   padding: 35px; }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .modal-dialog {
-      width: 720px;
-      max-width: 720px; } }
+      width: 520px;
+      max-width: 520px; } }
   @media only screen and (max-width: 767px) {
     .modal-dialog {
       width: 100%;
@@ -8910,4 +8910,92 @@ i.fab.fa-hotjar {
   font-size: 44px;color: white;width: 650px;
   margin: 30px auto;
   line-height: 65px;
+}
+.input-group-addon{
+  background-color: transparent !important;
+  
+}
+.sideline {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+color:#ccc;
+}
+.sideline:before,
+.sideline:after {
+    content: '';
+    border-top: 1px solid #ebebeb;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+.sideline:after {
+    margin: 0 0 0 20px;
+}
+.login-btn{
+  display: block;
+  width: 100%;
+  padding: 7px;
+  background: #0692FF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.google-btn{
+  display: block;
+  width: 100%;
+  padding: 7px;
+  background: #F56262;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.facebook-btn{
+  display: block;
+  width: 100%;
+  padding: 7px;
+  background: #18AEFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.form-control::placeholder{
+color: black !important;
+}
+.login-email{
+  border-radius: 0px;
+}
+.login-email:focus{
+  outline: none !important;
+  border-color:#0692FF !important;
+  box-shadow:none !important;
+}
+.login-password{
+  border-radius: 0px;
+}
+.login-password:focus{
+  outline: none !important;
+  border-color:#0692FF !important;
+  box-shadow:none !important;
+}
+.side-nav li{
+  background: rgb(112 112 112 / 5%);
+  padding: 15px 0px;
+  border-radius: 15px;
+  margin: 8px 0px;
+  padding-left: 15px;
+  cursor: pointer;
+}
+.side-nav .active,.side-nav li:active, .side-nav li:focus, .side-nav li:hover{
+  background: #0692FF;
+
+}
+.side-nav .active a{
+  color: white;
+  font-size: 16px;
+}
+.side-nav{
+  text-align: left;
 }
