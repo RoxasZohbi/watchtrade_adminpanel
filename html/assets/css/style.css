@@ -9110,3 +9110,6 @@ color: black !important;
   border: none;
   cursor: pointer;
 }
+.prod-price-watchlist{
+  font-size: 20px !important;
+}
