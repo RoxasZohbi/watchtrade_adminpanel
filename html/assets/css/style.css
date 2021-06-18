@@ -40,6 +40,7 @@
 /*----------------------------------------*/
 /*-- Google Font --*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900");
+@import url("../fonts/stylesheet.css")
 /*-- Common Style --*/
 *,
 *::after,
@@ -52,12 +53,11 @@ body {
   height: 100%; }
 
 body {
-  background-color: #f5f5f5;
   line-height: 24px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Euclid Flex',Arial, Helvetica, sans-serif;
   color: #000; }
 
 h1,
@@ -8633,16 +8633,18 @@ h3.cart-page-title {
 /*------ 25. My account Page  ------*/
 .single-my-account {
   margin-bottom: 20px;
-  border: 1px solid #ebebeb; }
+  /* border: 1px solid #ebebeb;  */
+}
   .single-my-account h3.panel-title {
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ebebeb;
+    background-color: transparent;
+    border-bottom: 1px solid #BFBFBF;
     color: #000;
     font-size: 15px;
     font-weight: 500;
     margin: 0;
     position: relative;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+  margin-left: 20px; }
     @media only screen and (max-width: 767px) {
       .single-my-account h3.panel-title {
         line-height: 22px;
@@ -8656,8 +8658,12 @@ h3.cart-page-title {
     .single-my-account h3.panel-title a {
       color: #242424;
       display: block;
-      padding: 16px 55px;
-      position: relative; }
+      padding: 16px 0px;
+      position: relative;
+      font-size: 22px;
+      text-transform: capitalize;
+      font-weight: 400;
+     }
       @media only screen and (max-width: 767px) {
         .single-my-account h3.panel-title a {
           padding: 16px 30px 16px 40px; } }
@@ -8675,8 +8681,8 @@ h3.cart-page-title {
       .single-my-account h3.panel-title a:hover::before {
         color: #0692FF; }
   .single-my-account .myaccount-info-wrapper {
-    padding: 30px 20px;
-    background-color: #fff; }
+    padding: 25px 20px;
+    background-color: #F5F5F5; }
     .single-my-account .myaccount-info-wrapper .account-info-wrapper {
       border-bottom: 1px solid #eaeaea;
       margin-bottom: 28px;
@@ -8696,7 +8702,7 @@ h3.cart-page-title {
         font-size: 14px;
         text-transform: capitalize; }
       .single-my-account .myaccount-info-wrapper .billing-info input {
-        background: transparent none repeat scroll 0 0;
+        background: white none repeat scroll 0 0;
         border: 1px solid #ebebeb;
         color: #000;
         height: 40px;
@@ -8787,9 +8793,10 @@ h3.cart-page-title {
 }
 header.header-area.header-padding-1.sticky-bar.header-res-padding.clearfix{
   z-index: 9;
-  position: absolute;
+  position: relative;
   top: 0px;
   width: 100%;
+  background-color: #000;
 }
 .form-group.has-search {
   display: flex;
@@ -8988,6 +8995,9 @@ color: black !important;
   padding-left: 25px;
   cursor: pointer;
 }
+.side-nav li a{
+  color: #707070;
+}
 .side-nav .active,.side-nav li:active, .side-nav li:focus, .side-nav li:hover{
   background: #0692FF;
 }
@@ -9009,6 +9019,10 @@ color: black !important;
   border-radius: 10px;
   background: #E0E0E0;
 }
+.side-nav li:hover img{
+  background: transparent;
+  border: none;
+}
 .side-nav .active img{
   border: none;
   background: none;
@@ -9027,4 +9041,31 @@ color: black !important;
 }
 .m-right-5{
   margin-right: 5px;
+}
+.panel-body{
+  background-color: transparent !important;
+}
+.acc-profile-btn-one{
+  cursor: pointer !important;
+  background: #0692ff !important;
+  color: white !important;
+}
+.switchToggle input[type=checkbox]{height: 0; width: 0; visibility: hidden; position: absolute; }
+.switchToggle label {cursor: pointer; text-indent: -9999px; width: 70px; max-width: 70px; height: 30px; background: #d1d1d1; display: block; border-radius: 100px; position: relative; }
+.switchToggle label:after {content: ''; position: absolute; top: 2px; left: 2px; width: 26px; height: 26px; background: #fff; border-radius: 90px; transition: 0.3s; }
+.switchToggle input:checked + label, .switchToggle input:checked + input + label  {background: #3e98d3; }
+.switchToggle input + label:before, .switchToggle input + input + label:before {content: 'No'; position: absolute; top: 5px; left: 35px; width: 26px; height: 26px; border-radius: 90px; transition: 0.3s; text-indent: 0; color: #fff; }
+.switchToggle input:checked + label:before, .switchToggle input:checked + input + label:before {content: 'Yes'; position: absolute; top: 5px; left: 10px; width: 26px; height: 26px; border-radius: 90px; transition: 0.3s; text-indent: 0; color: #fff; }
+.switchToggle input:checked + label:after, .switchToggle input:checked + input + label:after {left: calc(100% - 2px); transform: translateX(-100%); }
+.switchToggle label:active:after {width: 60px; } 
+.toggle-switchArea { margin: 10px 0 10px 0; }
+.switchToggle{display: flex;}
+.noti-p{
+  margin-top: 4px;
+  margin-left: 10px;
+}
+.acc-input:focus{
+  outline: none !important;
+  border-color: #0692FF !important;
+  box-shadow: none !important;
 }
