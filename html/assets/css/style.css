@@ -9069,3 +9069,44 @@ color: black !important;
   border-color: #0692FF !important;
   box-shadow: none !important;
 }
+.numberCircle {
+  border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center;
+    line-height: 20px;
+    font-size: 11px;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.flags2 {
+    width: 22px;
+    height: 19px;
+    margin: auto 7px;
+    margin-bottom: 5px;
+}
+.acc-bid-h2{
+  display: contents;font-size: 26px;
+}
+.acc-bid-div{
+  border-right: 1px solid #bfbfbf;height: 50%;
+}
+.continue-pay{
+  width: 100%;
+  padding: 8px 0px;
+  background: #0692FF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.contact-supp{
+  width: 100%;
+  padding: 8px 0px;
+  background: #2E2E2E;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
