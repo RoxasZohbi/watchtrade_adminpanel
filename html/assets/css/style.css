@@ -8906,6 +8906,12 @@ i.fab.fa-hotjar {
   padding: 5px 10px;
   border: 1px solid #666666;
 }
+.watchaction{
+  width: 200px;
+  border-radius: 0px;
+  padding: 5px 10px;
+  border: 1px solid #666666;
+}
 .caret{
   color: hsl(0deg 0% 70%);
 }
