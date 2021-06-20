@@ -9406,3 +9406,51 @@ li.active.text-center {
   text-align: left;
   padding: 20px;
 }
+.congrats-box{
+  border: 1px solid #BFBFBF;
+  border-radius: 3px;
+  margin-left: 15px;
+  padding: 0px;
+  text-align: center;
+}
+.congrats-box h4{
+  text-align: center;
+  border-bottom: 1px solid #BFBFBF;
+  padding: 10px;
+}
+.congrats-box img{
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+}
+.congrats-box a{
+  display: block;
+  margin-top: 30px;
+  font-size: 18px;
+}
+.congrats-box p{
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.congrats-box p span{
+  font-size: 15px;
+  font-weight: 700;
+}
+.bid-box{
+  border: 1px solid #df4b4b85;
+  background: rgb(253 59 59 / 10%);
+  border-radius: 7px;
+}
+.cont-support{
+  width: 100%;
+  background: #2E2E2E;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 0px 0px 5px 5px;
+}
+.cont-support-p{
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 15px;
+}
