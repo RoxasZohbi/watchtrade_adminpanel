@@ -9308,3 +9308,11 @@ li.active.text-center {
 .card-body p{
   color: #7A7A7A !important;
 } 
+.mapouter{
+  position:relative;text-align:right;height:350px;width:600px;-webkit-filter: grayscale(100%);
+  filter: grayscale(100%);    
+}
+.gmap_canvas {
+  overflow:hidden;background:none!important;height:350px;width:600px;-webkit-filter: grayscale(100%);
+  filter: grayscale(100%);    
+}
