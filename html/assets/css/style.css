@@ -9249,3 +9249,62 @@ color: black !important;
 .imgs {
   position: relative;
 }
+.faq-center-div{
+  padding: 20px;
+  width: 70%;
+  margin: auto;
+}
+li.active.text-center {
+  border-bottom: 2px solid #0692ff;
+}
+.nav-pills.text-center.active{
+  border-bottom: 2px solid #0692ff;
+}
+.wd-50{
+  width: 50%;
+}
+.wd-50 .nav-link.active{
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #0692ff;
+  text-align: center;
+  color: #0692ff;
+  font-size: 16px;
+}
+.wd-50 .nav-link{
+  background: transparent;
+  background-color: transparent;
+  border-bottom: 2px solid #7A7A7A;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+}
+.card{
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(0,0,0,.125) !important;
+  border-radius: 0px !important;
+}
+.card-header{
+  background-color: transparent !important;
+  padding: 12px 0px !important;
+  border: none !important;
+}
+.card-header .fa{
+  color: black !important;
+  font-weight: 100 !important;
+  margin-right: 15px !important;
+}
+
+.card-header button.btn.btn-link{
+  color: black !important;
+}
+.card-header button.btn.btn-link:hover{
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+.card-body p{
+  color: #7A7A7A !important;
+} 
