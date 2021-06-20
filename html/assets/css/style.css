@@ -9056,6 +9056,11 @@ color: black !important;
   background: #0692ff !important;
   color: white !important;
 }
+.acc-profile-btn-two{
+  cursor: pointer !important;
+  background: #2E2E2E !important;
+  color: white !important;
+}
 .learn-more{
   cursor: pointer !important;
   background: #707070 !important;
@@ -9248,4 +9253,204 @@ color: black !important;
 }
 .imgs {
   position: relative;
+}
+.faq-center-div{
+  padding: 20px;
+  width: 70%;
+  margin: auto;
+}
+li.active.text-center {
+  border-bottom: 2px solid #0692ff;
+}
+.nav-pills.text-center.active{
+  border-bottom: 2px solid #0692ff;
+}
+.wd-50{
+  width: 50%;
+}
+.wd-50 .nav-link.active{
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #0692ff;
+  text-align: center;
+  color: #0692ff;
+  font-size: 16px;
+}
+.wd-50 .nav-link{
+  background: transparent;
+  background-color: transparent;
+  border-bottom: 2px solid #7A7A7A;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+}
+.card{
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(0,0,0,.125) !important;
+  border-radius: 0px !important;
+}
+.card-header{
+  background-color: transparent !important;
+  padding: 12px 0px !important;
+  border: none !important;
+}
+.card-header .fa{
+  color: black !important;
+  font-weight: 100 !important;
+  margin-right: 15px !important;
+}
+
+.card-header button.btn.btn-link{
+  color: black !important;
+}
+.card-header button.btn.btn-link:hover{
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+.card-body p{
+  color: #7A7A7A !important;
+} 
+.mapouter{
+  position:relative;text-align:right;height:350px;width:600px;-webkit-filter: grayscale(100%);
+  filter: grayscale(100%);    
+}
+.gmap_canvas {
+  overflow:hidden;background:none!important;height:350px;width:600px;-webkit-filter: grayscale(100%);
+  filter: grayscale(100%);    
+}
+.blue{
+  color: #0692FF;
+}
+.slash{
+  font-size: 11px;
+  font-weight: 500;
+  padding: 0px 5px;
+}
+.watch-detail-flag{
+    width: 30px;
+    height: 22px;
+    margin: auto 7px 10px 20px;
+
+}
+.watch-detail-main-ul li ul li:first-child{
+  width: 40%;
+}
+.watch-detail-main-ul li ul li:last-child{
+  width: 60%;
+}
+.circle{
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #7A7A7A;
+  float: right;
+  line-height: 30px;
+  padding-left: 5px;
+  font-weight: 700;
+}
+.bid-history{
+  padding-top: 20px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  background-color: #FFFFFF;
+}
+/* Scroll Bar */
+#style-13::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#style-13::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+#style-13::-webkit-scrollbar-thumb
+{
+	background-color: #AAA;
+	border-radius: 10px;
+	background-image: -webkit-linear-gradient(90deg,
+	                                          rgba(0, 0, 0, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(0, 0, 0, .2) 50%,
+											  rgba(0, 0, 0, .2) 75%,
+											  transparent 75%,
+											  transparent)
+}
+
+/* Scroll bar end */
+.bid-active{
+  color: #272727;
+  opacity: 1;
+}
+.bid-delay{
+  color: #272727;
+  opacity: 0.4;
+}
+.bid-quote{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #FFFFFF;
+  border: 1px solid #BFBFBF;
+}
+.bid-quote-p{
+  font-size: 12px;
+  text-align: left;
+  padding: 20px;
+}
+.congrats-box{
+  border: 1px solid #BFBFBF;
+  border-radius: 3px;
+  margin-left: 15px;
+  padding: 0px;
+  text-align: center;
+}
+.congrats-box h4{
+  text-align: center;
+  border-bottom: 1px solid #BFBFBF;
+  padding: 10px;
+}
+.congrats-box img{
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+}
+.congrats-box a{
+  display: block;
+  margin-top: 30px;
+  font-size: 18px;
+}
+.congrats-box p{
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.congrats-box p span{
+  font-size: 15px;
+  font-weight: 700;
+}
+.bid-box{
+  border: 1px solid #df4b4b85;
+  background: rgb(253 59 59 / 10%);
+  border-radius: 7px;
+}
+.cont-support{
+  width: 100%;
+  background: #2E2E2E;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 0px 0px 5px 5px;
+}
+.cont-support-p{
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 15px;
 }
