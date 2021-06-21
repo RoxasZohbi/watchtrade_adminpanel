@@ -1335,7 +1335,7 @@ textarea:focus {
 ------------------------------------------*/
 .bg-purple {
   /* background-color: #f0e0ff; */
-  background-image: url('../images/xd/bg-1.jpg');
+  background-image: url('../../assets/icons/xd/bg-1.jpg');
   background-size: cover;
 }
 .bg-gray {
@@ -8838,7 +8838,7 @@ i.fa.fa-filter {
   margin: auto 0px;
 }
 .foot-img{
-  background-image: url('../images/xd/foot-2.jpg');
+  background-image: url('../../assets/icons/xd/foot-2.jpg');
   background-size: cover;
   padding: 135px;
 }
@@ -9148,13 +9148,13 @@ color: black !important;
   background-repeat: no-repeat;
 }
 .about-div-2{
-  background-image: url(../images/xd/about/bg-2.png);
+  background-image: url('../../assets/icons/xd/about/bg-2.png');
   background-size: 100%;
   height: 520px;
   background-repeat: no-repeat;
 }
 .about-div-3{
-  background-image: url(../images/xd/about/bg-3.png);
+  background-image: url('../../assets/icons/xd/about/bg-3.png');
   background-size: 100%;
   height: 400px;
   background-repeat: no-repeat;
@@ -9490,14 +9490,4 @@ li.active.text-center {
   border: none;
   cursor: pointer;
   border-radius: 0px 0px 5px 5px;
-}
-.payment-modal{
-  max-width: 1000px !important;
-  width: 1000px !important;
-}
-.checkout-heading{
-  color: white;
-  margin-bottom: 0px;
-  padding: 5px 20px;
-  font-size: 22px;
 }
