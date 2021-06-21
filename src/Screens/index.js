@@ -17,6 +17,8 @@ import Dashboard from './Dashboard/Dashboard'
 import Faqs from './FAQs/Faqs'
 import About from './About/About'
 import ContactUs from './Contact/ContactUs'
+import NoWatchState from './NoWatchState/NoWatchState'
+import SellWatch from './SellWatch/SellWatch'
 
 class MainApplication extends Component {
   render() {
@@ -25,7 +27,8 @@ class MainApplication extends Component {
       {/* <Dashboard/> */}
       {/* <About/> */}
       {/* <Faqs/> */}
-      <ContactUs/>
+      {/* <ContactUs/> */}
+      <SellWatch/>
       </>
     );
   }
