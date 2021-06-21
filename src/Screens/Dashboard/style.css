@@ -9657,3 +9657,41 @@ li.active.text-center {
 .no-watch-btn{
   width: 200px !important;
 }
+.account-bid{
+  position: relative !important;
+  left: 0 !important; 
+  top: 0 !important;
+}
+.account-bid-img{
+  position: relative !important;
+}
+.account-bid-a{
+  position: absolute !important;
+  right: 50px !important;
+  bottom: 5px !important;
+}
+.account-bid-h2{
+  font-size: 22px !important;
+  color: #0692FF !important;
+}
+.fs-16{
+  font-size: 16px !important;
+}
+.wd-75{
+  width: 75% !important;
+}
+.fs-22{
+  font-size: 22px !important;
+}
+.warning-account{
+  width: 25px !important;
+  height: 25px !important;
+}
+.account-watchlist-div{
+  font-size: 22px !important;
+  display: contents !important;
+}
+.account-watchlist-p{
+  margin-bottom: 10px !important;
+  color: #2e2e2e !important;
+}
