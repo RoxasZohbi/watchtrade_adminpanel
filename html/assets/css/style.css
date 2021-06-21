@@ -9647,3 +9647,13 @@ width: 100% !important;
 .wd-30{
   width: 30% !important;
 }
+.wd-80{
+  width: 80% !important;
+}
+.no-watch-p{
+  padding: 20px 0px !important;
+  color: #666666 !important;
+}
+.no-watch-btn{
+  width: 200px !important;
+}
