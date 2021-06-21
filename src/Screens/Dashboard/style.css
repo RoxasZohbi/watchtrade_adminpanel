@@ -9577,7 +9577,7 @@ li.active.text-center {
   border: none !important;
 }
 .about-main-cont{
-  background-image: url('../images/xd/about-banner.png'); /*correct the path please */
+  background-image: url('../../assets/icons/xd/about-banner.png'); /*correct the path please */
   height: 500px;
   background-size: cover;
 }
@@ -9602,7 +9602,7 @@ li.active.text-center {
   width: 100% !important;
 }
 .contact-main-cont{
-  background-image: url('../images/xd/contact-top.png') !important;
+  background-image: url('../../assets/icons/xd/contact-top.png') !important;
   height: 500px !important;
   background-size: cover !important;
 }
@@ -9625,12 +9625,12 @@ li.active.text-center {
   border-right: 1px solid #E0E0E0 !important;
 }
 .faq-main-cont{
-  background-image: url('../images/xd/faqs/bg.png') !important;
+  background-image: url('../../assets/icons/xd/faqs/bg.png') !important;
   height: 500px !important;
   background-size: cover !important;
 }
 .sell-watch-main-cont{
-  background-image: url('../images/xd/sell-watch.png') !important;
+  background-image: url('../../assets/icons/xd/sell-watch.png') !important;
   height: 500px !important;
   background-size: cover !important;
 }
