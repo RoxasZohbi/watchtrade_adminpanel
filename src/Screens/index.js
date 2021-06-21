@@ -21,6 +21,9 @@ import NoWatchState from './NoWatchState/NoWatchState'
 import SellWatch from './SellWatch/SellWatch'
 import AccountBid from './AccountBid/AccountBid'
 import AccountBilling from './AccountBilling/AccountBilling'
+import AccountListing from './AccountListing/AccountListing'
+import AccountProfile from './AccountProfile/AccountProfile'
+import AccountWatchList from './AccountWatchList/AccountWatchList'
 
 class MainApplication extends Component {
   render() {
@@ -32,7 +35,9 @@ class MainApplication extends Component {
       {/* <ContactUs/> */}
       {/* <SellWatch/> */}
       {/* <AccountBid/> */}
-      <AccountBilling/>
+      {/* <AccountListing/> */}
+      {/* <AccountProfile/> */}
+      <AccountWatchList/>
       </>
     );
   }
