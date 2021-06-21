@@ -9491,3 +9491,13 @@ li.active.text-center {
   cursor: pointer;
   border-radius: 0px 0px 5px 5px;
 }
+.payment-modal{
+  max-width: 1000px !important;
+  width: 1000px !important;
+}
+.checkout-heading{
+  color: white;
+  margin-bottom: 0px;
+  padding: 5px 20px;
+  font-size: 22px;
+}

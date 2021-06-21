@@ -125,7 +125,7 @@
                             <p>placed a bid of <span>$55,000</span></p>
                         </div>
                         <div class="col-md-12 ml-15 p-0">
-                            <button class="continue-payment">Continue Payment</button>
+                            <button class="continue-payment" data-toggle="modal" data-target="#paymentModal">Continue Payment</button>
                             <button class="contact-support">Contact Support</button>
                         </div>
                     </div>
@@ -485,17 +485,16 @@
 <!-- Modal end -->
 
 <!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog login-modal" role="document">
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog payment-modal" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="border-bottom:none;">
+            <div class="modal-header" style="border-bottom:none;background-color: black;">
+                <h4 class="checkout-heading">Checkout</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-weight: 400;">x</span></button>
             </div>
             <div class="modal-body" style="padding-top: 0px;">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <h4 class="mb-60" style="font-size: 24px;text-align: center;">Sign in to WatchTrade</h4>
-                    </div>
+                    
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <form action="#" class="form-control" style="background-color: transparent;border: none;">
                             <input type="text" class="form-control login-email" placeholder="Email Address">
