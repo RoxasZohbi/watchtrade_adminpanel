@@ -14,14 +14,18 @@ import './style.css'
 import Header from '../Component/Header'
 import Footer from '../Component/Footer'
 import Dashboard from './Dashboard/Dashboard'
+import Faqs from './FAQs/Faqs'
 import About from './About/About'
+import ContactUs from './Contact/ContactUs'
 
 class MainApplication extends Component {
   render() {
     return (
       <>
       {/* <Dashboard/> */}
-      <About/>
+      {/* <About/> */}
+      {/* <Faqs/> */}
+      <ContactUs/>
       </>
     );
   }
