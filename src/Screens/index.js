@@ -19,6 +19,8 @@ import About from './About/About'
 import ContactUs from './Contact/ContactUs'
 import NoWatchState from './NoWatchState/NoWatchState'
 import SellWatch from './SellWatch/SellWatch'
+import AccountBid from './AccountBid/AccountBid'
+import AccountBilling from './AccountBilling/AccountBilling'
 
 class MainApplication extends Component {
   render() {
@@ -28,7 +30,9 @@ class MainApplication extends Component {
       {/* <About/> */}
       {/* <Faqs/> */}
       {/* <ContactUs/> */}
-      <SellWatch/>
+      {/* <SellWatch/> */}
+      {/* <AccountBid/> */}
+      <AccountBilling/>
       </>
     );
   }
