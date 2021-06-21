@@ -9576,3 +9576,28 @@ li.active.text-center {
   background-color: transparent !important;
   border: none !important;
 }
+.about-main-cont{
+  background-image: url(../images/xd/about-banner.png);
+  height: 500px;
+  background-size: cover;
+}
+.about-main-cont-p{
+  width: 600px !important;
+}
+.about-contact{
+  border: none !important;
+  width: 150px !important;
+}
+.about-follow-social{
+  font-size: 22px !important;
+}
+.about-follow-social-div{
+  justify-content: flex-end !important;
+  display: flex !important;
+}
+.about-follow-social-ul{
+  display: flex !important;
+}
+.wd-100{
+width: 100% !important;
+}
