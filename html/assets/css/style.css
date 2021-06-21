@@ -9624,3 +9624,26 @@ width: 100% !important;
 .contact-tel{
   border-right: 1px solid #E0E0E0 !important;
 }
+.faq-main-cont{
+  background-image: url(../images/xd/faqs/bg.png) !important;
+  height: 500px !important;
+  background-size: cover !important;
+}
+.sell-watch-main-cont{
+  background-image: url(../images/xd/sell-watch.png) !important;
+  height: 500px !important;
+  background-size: cover !important;
+}
+.sell-watch-personal{
+  font-size: 16px !important;
+  color:#666666 !important;
+}
+.sell-watch-textarea{
+  color:#272727 !important;
+}
+.fw-100{
+  font-weight: 100 !important;
+}
+.wd-30{
+  width: 30% !important;
+}
