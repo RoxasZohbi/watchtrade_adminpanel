@@ -10,7 +10,6 @@ import {
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import './style.css'
 import Header from '../../Component/Header'
 import Footer from '../../Component/Footer'
 

@@ -18,7 +18,8 @@ const loading = (
 // // Pages
 // const Login = React.lazy(() => import('./views/pages/login/Login'));
 // const Register = React.lazy(() => import('./views/pages/register/Register'));
-const Dashboard = React.lazy(() => import('./Screens/Dashboard/Dashboard'));
+// const Dashboard = React.lazy(() => import('./Screens/Dashboard/Dashboard'));
+const MainPageApp = React.lazy(() => import('./Screens'));
 // const Page404 = React.lazy(() => import('./views/pages/page404/Page404'));
 // const Page500 = React.lazy(() => import('./views/pages/page500/Page500'));
 
@@ -35,7 +36,7 @@ class App extends Component {
               <Route exact path="/500" name="Page 500" render={props => <Page500 {...props}/>} />
               <Route path="/apps/email" name="Email App" render={props => <TheEmailApp {...props}/>} />
               <Route path="/" name="Home" render={props => <TheLayout {...props}/>} /> */}
-              <Route path="/" name="WatchTrade" render={props => <Dashboard {...props}/>} />
+              <Route path="/" name="WatchTrade" render={props => <MainPageApp {...props}/>} />
             </Switch>
           </React.Suspense>
       </HashRouter>

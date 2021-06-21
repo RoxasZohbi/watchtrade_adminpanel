@@ -1335,7 +1335,7 @@ textarea:focus {
 ------------------------------------------*/
 .bg-purple {
   /* background-color: #f0e0ff; */
-  background-image: url('../../assets/icons/xd/bg-1.jpg');
+  background-image: url('../assets/icons/xd/bg-1.jpg');
   background-size: cover;
 }
 .bg-gray {
@@ -6185,7 +6185,7 @@ a.default-btn {
   display: none; }
 
 .subscribe-style-2 .subscribe-form-2 form .clear-2 {
-  background: rgba(0, 0, 0, 0) url("../../assets/img/icon-img/suscribe.png") no-repeat scroll right 0 center;
+  background: rgba(0, 0, 0, 0) url("../assets/img/icon-img/suscribe.png") no-repeat scroll right 0 center;
   bottom: 0px;
   display: inline-block;
   position: absolute;
@@ -6868,7 +6868,7 @@ a.default-btn {
         -moz-appearance: none;
         -webkit-appearance: none;
         min-width: 143px;
-        background: rgba(0, 0, 0, 0) url("../../assets/img/icon-img/select.png") no-repeat scroll right 0px center; }
+        background: rgba(0, 0, 0, 0) url("../assets/img/icon-img/select.png") no-repeat scroll right 0px center; }
     .shop-top-bar .select-shoing-wrap p {
       color: #606060;
       margin: 0; }
@@ -7731,7 +7731,7 @@ h3.cart-page-title {
         .discount-code-wrapper .tax-wrapper .tax-select-wrapper .tax-select select {
           -moz-appearance: none;
           -webkit-appearance: none;
-          background: #fff url("../../assets/img/icon-img/cart.png") no-repeat scroll right 18px center;
+          background: #fff url("../assets/img/icon-img/cart.png") no-repeat scroll right 18px center;
           border: 1px solid #ebebeb;
           -webkit-box-shadow: none;
           box-shadow: none;
@@ -7924,7 +7924,7 @@ h3.cart-page-title {
   font-size: 14px;
   height: 45px;
   padding: 2px 20px;
-  background: rgba(0, 0, 0, 0) url("../../assets/img/icon-img/select.png") no-repeat scroll right 18px center;
+  background: rgba(0, 0, 0, 0) url("../assets/img/icon-img/select.png") no-repeat scroll right 18px center;
   cursor: pointer; }
 
 .billing-info-wrap .checkout-account {
@@ -8838,7 +8838,7 @@ i.fa.fa-filter {
   margin: auto 0px;
 }
 .foot-img{
-  background-image: url('../../assets/icons/xd/foot-2.jpg');
+  background-image: url('../assets/icons/xd/foot-2.jpg');
   background-size: cover;
   padding: 135px;
 }
@@ -9142,19 +9142,19 @@ color: black !important;
   margin-top: 200px;
 }
 .about-div-1{
-  background-image: url('../../assets/icons/xd/about/bg-1.png');
+  background-image: url('../assets/icons/xd/about/bg-1.png');
   background-size: 100%;
   height: 520px;
   background-repeat: no-repeat;
 }
 .about-div-2{
-  background-image: url('../../assets/icons/xd/about/bg-2.png');
+  background-image: url('../assets/icons/xd/about/bg-2.png');
   background-size: 100%;
   height: 520px;
   background-repeat: no-repeat;
 }
 .about-div-3{
-  background-image: url('../../assets/icons/xd/about/bg-3.png');
+  background-image: url('../assets/icons/xd/about/bg-3.png');
   background-size: 100%;
   height: 400px;
   background-repeat: no-repeat;
@@ -9237,7 +9237,7 @@ color: black !important;
 }
 
 .imgs:hover .overlay {
-  height: 100%;
+  height: 100% !important;
 }
 
 .text {
@@ -9252,7 +9252,7 @@ color: black !important;
   text-align: center;
 }
 .imgs {
-  position: relative;
+  position: relative !important;
 }
 .faq-center-div{
   padding: 20px;
@@ -9577,7 +9577,7 @@ li.active.text-center {
   border: none !important;
 }
 .about-main-cont{
-  background-image: url('../../assets/icons/xd/about-banner.png'); /*correct the path please */
+  background-image: url('../assets/icons/xd/about-banner.png');
   height: 500px;
   background-size: cover;
 }
@@ -9599,10 +9599,10 @@ li.active.text-center {
   display: flex !important;
 }
 .wd-100{
-  width: 100% !important;
+width: 100% !important;
 }
 .contact-main-cont{
-  background-image: url('../../assets/icons/xd/contact-top.png') !important;
+  background-image: url('../assets/icons/xd/contact-top.png') !important;
   height: 500px !important;
   background-size: cover !important;
 }
@@ -9625,12 +9625,12 @@ li.active.text-center {
   border-right: 1px solid #E0E0E0 !important;
 }
 .faq-main-cont{
-  background-image: url('../../assets/icons/xd/faqs/bg.png') !important;
+  background-image: url('../assets/icons/xd/faqs/bg.png') !important;
   height: 500px !important;
   background-size: cover !important;
 }
 .sell-watch-main-cont{
-  background-image: url('../../assets/icons/xd/sell-watch.png') !important;
+  background-image: url('../assets/icons/xd/sell-watch.png') !important;
   height: 500px !important;
   background-size: cover !important;
 }
