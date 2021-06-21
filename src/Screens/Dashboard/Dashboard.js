@@ -10,6 +10,7 @@ import {
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import './style.css'
 
 class Dashboard extends Component {
 
@@ -55,7 +56,20 @@ class Dashboard extends Component {
             </div>
           </div>
         </header>
-        
+        <div class="slider-area">
+          <div class="slider-active owl-carousel nav-style-1">
+            <div class="single-slider slider-height-1 bg-purple">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12">
+                    <h1 class="title-heading">But I must explain to you how all this mistaken idea.</h1>
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* <div class="slider-area">
           <div class="slider-active owl-carousel nav-style-1">
             <div class="single-slider slider-height-1 bg-purple">
