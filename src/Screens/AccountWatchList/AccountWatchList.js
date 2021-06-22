@@ -12,6 +12,7 @@ import {
 import CIcon from '@coreui/icons-react'
 import Header from '../../Component/Header'
 import Footer from '../../Component/Footer'
+import AccountSideBar from '../../Component/AccountSideBar'
 
 class Dashboard extends Component {
     render() {
@@ -29,7 +30,9 @@ class Dashboard extends Component {
 
                                 <h2 class="mt-25 account-bid-h2">@marcussmith</h2>
                                 <h6 class="fs-16">Marcus Smith</h6>
-                                <div class="mt-40">
+                                <AccountSideBar ChangeView={this.props.ChangeView} watchlist={true}/>
+                              
+                                {/* <div class="mt-40">
                                     <ul class="side-nav">
                                         <li>
                                             <img src={require('../../assets/icons/xd/icons/profile.png')} alt="" />
@@ -52,7 +55,7 @@ class Dashboard extends Component {
                                             <a class="ml-20" href="account-watchlist.html">Watchlist</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> */}
                                 <div class="text-left mb-20">
                                     <button class="logout-btn"><img class="m-right-5" src={require('../../assets/icons/xd/icons/leave.png')} alt="" /> Logout</button>
                                 </div>

@@ -57,6 +57,9 @@ class MainApplication extends Component {
     if (viewRequest === "AccountBid") {
       this.setState({ screen: 'AccountBid' });
     }
+    if (viewRequest === "AccountBilling") {
+      this.setState({ screen: 'AccountBilling' });
+    }
     if (viewRequest === "AccountListing") {
       this.setState({ screen: 'AccountListing' });
     }
@@ -91,6 +94,7 @@ class MainApplication extends Component {
         {this.state.screen === "SellWatch" && <SellWatch ChangeView={this.ChangeView}/>}
         {this.state.screen === "AccountBid" && <AccountBid ChangeView={this.ChangeView}/>}
         {this.state.screen === "AccountListing" && <AccountListing ChangeView={this.ChangeView}/>}
+        {this.state.screen === "AccountBilling" && <AccountBilling ChangeView={this.ChangeView}/>}
         {this.state.screen === "AccountProfile" && <AccountProfile ChangeView={this.ChangeView}/>}
         {this.state.screen === "AccountWatchList" && <AccountWatchList ChangeView={this.ChangeView}/>}
         {this.state.screen === "WatchDetailLostAuction" && <WatchDetailLostAuction ChangeView={this.ChangeView}/>}

@@ -45,7 +45,7 @@ class Dashboard extends Component {
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
                         <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Contact us</a></li>
+                        <li onClick={()=>this.props.ChangeView('ContactUs')}><a href="#">Contact us</a></li>
                       </ul>
                     </div>
                   </div>
