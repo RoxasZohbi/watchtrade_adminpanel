@@ -17,7 +17,7 @@ class Dashboard extends Component {
   render() {
     return (
       <>
-        <Header />
+        <Header ChangeView={this.props.ChangeView}/>
         <div class="slider-area">
           <div class="slider-active owl-carousel nav-style-1">
             <div class="single-slider slider-height-1 bg-purple">
@@ -114,7 +114,7 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer  ChangeView={this.props.ChangeView}/>
       </>
     );
   }

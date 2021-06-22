@@ -17,7 +17,7 @@ class SellWatch extends Component {
     render() {
         return (
             <>
-                <Header />
+                <Header ChangeView={this.props.ChangeView}/>
                 <div class="container-fluid sell-watch-main-cont">
                     <div class="container">
                         <div class="row">
@@ -95,7 +95,7 @@ class SellWatch extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
+                <Footer ChangeView={this.props.ChangeView}/>
             </>
         );
     }

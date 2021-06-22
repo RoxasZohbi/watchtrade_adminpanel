@@ -21,9 +21,9 @@ class Dashboard extends Component {
                   <div class="main-menu">
                     <nav>
                       <ul>
-                        <li><a href="#"> Auctions </a></li>
-                        <li><a href="#"> Sell Now </a></li>
-                        <li><a href="#"> Register </a></li>
+                        <li onClick={()=>this.props.ChangeView('Dashboard')}><a href="#" > Auctions </a></li>
+                        <li onClick={()=>this.props.ChangeView('SellWatch')}><a href="#"> Sell Now </a></li>
+                        <li><a  href="#"> Register </a></li>
                         <li><a href="#" data-toggle="modal" data-target="#loginModal"> Login </a></li>
                       </ul>
                     </nav>

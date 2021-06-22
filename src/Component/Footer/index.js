@@ -57,10 +57,10 @@ class Dashboard extends Component {
                     </div>
                     <div class="footer-list pt-50">
                       <ul>
-                        <li><a href="#">Sell Now</a></li>
-                        <li><a href="#">About Watch Trade</a></li>
-                        <li><a href="#">Sell Now</a></li>
-                        <li><a href="#">FAQ's</a></li>
+                        <li onClick={()=>this.props.ChangeView('SellWatch')}><a href="#">Sell Now</a></li>
+                        <li onClick={()=>this.props.ChangeView('About')}><a href="#">About Watch Trade</a></li>
+                        <li onClick={()=>this.props.ChangeView('SellWatch')}><a href="#">Sell Now</a></li>
+                        <li onClick={()=>this.props.ChangeView('Faqs')}><a href="#">FAQ's</a></li>
                       </ul>
                     </div>
                   </div>

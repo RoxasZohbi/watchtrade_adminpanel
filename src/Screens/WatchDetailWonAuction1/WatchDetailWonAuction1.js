@@ -13,7 +13,7 @@ import CIcon from '@coreui/icons-react'
 import Header from '../../Component/Header'
 import Footer from '../../Component/Footer'
 
-class WatchDetailLostAuction extends Component {
+class WatchDetailWonAuction1 extends Component {
     render() {
         return (
             <>
@@ -55,20 +55,27 @@ class WatchDetailLostAuction extends Component {
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-4 pl-30 pt-10 mb-50">
+                            <div class="col-md-4 pl-30 pt-10 mb-0">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="lost-auction">Lost Auction</p>
+                                        <div class="col-md-12 mb-20">
+                                            <p class="won-auction">Won Auction</p>
                                             <h3 class="watch-detail-h2">Bremont</h3>
                                             <img class="watch-detail-flag" src={require('../../assets/flags/us.png')} alt="Germany Flag" />
                                             <p class="mb-10 dark-color">Sunlight Travel Halking</p>
                                         </div>
-                                        <div class="col-md-12 congrats-box">
-                                            <h4>Congratulations!</h4>
-                                            <img src={require('../../assets/icons/xd/people/human-1.png')} alt="" />
-                                            <a class="blue" href="#">@janinemallari</a>
-                                            <p>placed a bid of <span>$55,000</span></p>
+                                        <div class="col-md-7">
+                                            <h2>$43,000</h2>
+                                            <p class="fs-12 lh-15">winning bid: <a href="#">@marcussmith</a></p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h2>05/02/20</h2>
+                                            <p class="fs-12 lh-15">Auction End</p>
+                                        </div>
+                                        <div class="col-md-12 mt-30 pr-0">
+                                            <p class="opac-03">$44,000 or more</p>
+                                            <input class="acc-profile-btn-one mt-10" type="button" value="Place a Bid" class="wd-100" />
+                                            <input class="acc-profile-btn-two mt-10" type="button" value="+ Add to Watchlist" class="wd-100" />
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +131,7 @@ class WatchDetailLostAuction extends Component {
                                             </ul>
                                         </div>
                                         <div class="col-md-7 pl-40">
-                                            <h3 class="mb-20 fw-300 m-auto">Lot Overview</h3>
+                                            <h3 class="mb-20 m-auto fw-300">Lot Overview</h3>
                                             <ul class="watch-detail-main-ul">
                                                 <li>
                                                     <ul class="ds-flex">
@@ -193,28 +200,23 @@ class WatchDetailLostAuction extends Component {
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="container pl-40 pr-0">
+                                <div class="container">
                                     <div class="row">
-                                        <div class="col-md-12 pl-0 mb-30 pr-0">
-                                            <hr class="watch-detail-hr" />
+                                        <div class="col-md-6 pl-15">
+                                            <h3>Bid History</h3>
                                         </div>
-                                        <div class="col-md-12 pl-0 mb-10 pr-0">
-                                            <h3>Your Bid</h3>
+                                        <div class="col-md-6 pr-0">
+                                            <p class="circle">45</p>
                                         </div>
-                                        <div class="col-md-12 pl-0 pr-0 bid-box">
-                                            <div class="row pt-15 pb-15 pr-0 pl-0">
-                                                <div class="col-md-7 m-auto">
-                                                    <h3 class="mb-0 bid-active fw-400 pl-25">$50,000</h3>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <a href="#" class="blue">@marcussmith</a>
-                                                    <p class="fs-12">Lost Auction</p>
-                                                </div>
-                                            </div>
+                                        <div class="col-md-12 congrats-box mt-20">
+                                            <h4>Congratulations!</h4>
+                                            <img src={require('../../assets/icons/xd/people/human-1.png')} alt="" />
+                                            <a class="blue" href="#">@janinemallari</a>
+                                            <p>placed a bid of <span>$55,000</span></p>
                                         </div>
-                                        <div class="col-md-12 pl-0 pr-0 mt-20">
-                                            <button class="cont-support">Contact Support</button>
-                                            <p class="cont-support-p">Any question or clarification regarding this auction? Customer Support is available to answer your Inquiries.</p>
+                                        <div class="col-md-12 ml-15 p-0">
+                                            <button class="continue-payment">View Order Details</button>
+                                            <button class="contact-support">Contact Support</button>
                                         </div>
                                     </div>
                                 </div>
@@ -229,4 +231,4 @@ class WatchDetailLostAuction extends Component {
     }
 }
 
-export default WatchDetailLostAuction;
+export default WatchDetailWonAuction1;

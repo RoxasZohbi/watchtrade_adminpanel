@@ -17,7 +17,7 @@ class Faqs extends Component {
     render() {
         return (
             <>
-                <Header />
+                <Header ChangeView={this.props.ChangeView}/>
 
                 <div class="container-fluid faq-main-cont">
                     <div class="container">
@@ -237,7 +237,7 @@ class Faqs extends Component {
                     </div>
                 </div>
 
-                <Footer />
+                <Footer ChangeView={this.props.ChangeView}/>
             </>
         );
     }

@@ -17,7 +17,7 @@ class ContactUs extends Component {
     render() {
         return (
             <>
-                <Header />
+                <Header ChangeView={this.props.ChangeView}/>
                 <div class="container-fluid contact-main-cont">
                     <div class="container">
                         <div class="row">
@@ -92,7 +92,7 @@ class ContactUs extends Component {
                 </div>
 
 
-                <Footer />
+                <Footer ChangeView={this.props.ChangeView}/>
             </>
         );
     }

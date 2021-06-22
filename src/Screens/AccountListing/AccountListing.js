@@ -17,7 +17,7 @@ class AccountListing extends Component {
     render() {
         return (
             <>
-                <Header />
+                <Header ChangeView={this.props.ChangeView}/>
                 <div class="container-fluid pt-100 bg-all">
                     <div class="container">
                         <div class="row">
@@ -197,7 +197,7 @@ class AccountListing extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
+                <Footer ChangeView={this.props.ChangeView}/>
             </>
         );
     }

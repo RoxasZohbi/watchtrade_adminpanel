@@ -17,7 +17,7 @@ class Dashboard extends Component {
     render() {
         return (
             <>
-                <Header />
+                <Header ChangeView={this.props.ChangeView}/>
                 <div class="container-fluid pt-100 bg-all">
                     <div class="container">
                         <div class="row">
@@ -195,7 +195,7 @@ class Dashboard extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
+                <Footer ChangeView={this.props.ChangeView}/>
             </>
         );
     }
