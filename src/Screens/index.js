@@ -24,6 +24,8 @@ import AccountBilling from './AccountBilling/AccountBilling'
 import AccountListing from './AccountListing/AccountListing'
 import AccountProfile from './AccountProfile/AccountProfile'
 import AccountWatchList from './AccountWatchList/AccountWatchList'
+import WatchDetailLostAuction from './WatchDetailLostAuction/WatchDetailLostAuction'
+import WatchDetailWonAuction from './WatchDetailWonAuction/WatchDetailWonAuction'
 
 class MainApplication extends Component {
   render() {
@@ -37,7 +39,9 @@ class MainApplication extends Component {
       {/* <AccountBid/> */}
       {/* <AccountListing/> */}
       {/* <AccountProfile/> */}
-      <AccountWatchList/>
+      {/* <AccountWatchList/> */}
+      {/* <WatchDetailLostAuction/> */}
+      <WatchDetailWonAuction/>
       </>
     );
   }
