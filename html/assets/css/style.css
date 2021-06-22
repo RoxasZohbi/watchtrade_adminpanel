@@ -9695,3 +9695,55 @@ width: 100% !important;
   margin-bottom: 10px !important;
   color: #2e2e2e !important;
 }
+
+/* 21-6-2021 11:20 am */
+.dark-color{
+  color: #2E2E2E !important;
+}
+.watch-detail-h2{
+  font-size: 40px !important;
+  display: contents !important;
+}
+.watch-detail-border{
+  border-right: 1px solid #E0E0E0 !important;
+}
+.fw-300{
+  font-weight: 300 !important;
+}
+.ds-flex{
+  display: flex !important;
+}
+.fs-12{
+  font-size: 12px !important;
+}
+.wd-70{
+  width: 70% !important;
+}
+.wd-95{
+  width: 95% !important;
+}
+.watch-detail-hr{
+  border:1px solid #e0e0e0 !important;
+}
+.lh-15{
+  line-height: 15px !important;
+}
+.opac-03{
+  opacity: 0.3 !important;
+}
+.h-500{
+  height: 500px !important;
+}
+.watch-detail-overflow{
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+.watch-detail-bid{
+  border: 1px solid #e0e0e0 !important;
+}
+.watch-detail-hr-bold{
+  border:2px solid #e0e0e0 !important;
+}
+.h-700{
+  height: 700px !important;
+}
