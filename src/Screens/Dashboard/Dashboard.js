@@ -38,16 +38,16 @@ class Dashboard extends Component {
                         <div class="container">
                           <div class="row">
                             <div class="col-md-3 text-left">
-                              <h3 class="mt-20">Manufacturers</h3>
+                              <h3 class="mt-20 mb-50">Manufacturers</h3>
                             </div>
                             <div class="col-md-3 text-left">
                               
                             </div>
                             <div class="col-md-3 text-left">
-                              <h3 class="mt-20">Location</h3>
+                              <h3 class="mt-20 mb-50">Location</h3>
                             </div>
                             <div class="col-md-3 text-left">
-                              <h3 class="mt-20">Seller Type</h3>
+                              <h3 class="mt-20 mb-50">Seller Type</h3>
                             </div>
                               <div class="col-md-3 text-left">
                                 <div class="form-check">
