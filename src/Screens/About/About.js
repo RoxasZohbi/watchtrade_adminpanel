@@ -85,9 +85,9 @@ class Dashboard extends Component {
           </div>
           <div class="row">
             <div class="col-md-12 heroSlider-fixed pl-0 pr-0">
-              <div class="overlay">
-              </div>
-              <div class="slider responsive">
+              {/* <div class="overlay">
+              </div> */}
+              <div class="slider responsive ds-flex">
                 <div class="imgs">
                   <img src={require('../../assets/icons/xd/about/slider-1/1.png')} alt="" class="wd-100" />
                   <div class="overlay">
@@ -136,53 +136,53 @@ class Dashboard extends Component {
           </div>
           <div class="row">
             <div class="col-md-12 heroSlider-fixed pl-0 pr-0">
-              <div class="overlay">
-              </div>
-              <div class="slider responsive">
+              {/* <div class="overlay">
+              </div> */}
+              <div class="slider responsive ds-flex">
                 <div class="imgs">
-                  <img src="../../assets/icons/xd/about/slider-2/1.png" alt="" class="wd-100" />
+                  <img src={require('../../assets/icons/xd/about/slider-2/1.png')} alt="" class="wd-100" />
                   <div class="overlay">
                     <div class="text">Hello World</div>
                   </div>
                 </div>
                 <div class="imgs">
-                  <img src="../../assets/icons/xd/about/slider-2/2.png" alt="" class="wd-100" />
+                  <img src={require('../../assets/icons/xd/about/slider-2/2.png')} alt="" class="wd-100" />
                   <div class="overlay">
                     <div class="text">Hello World</div>
                   </div>
                 </div>
                 <div class="imgs">
-                  <img src="../../assets/icons/xd/about/slider-2/3.png" alt="" class="wd-100" />
+                  <img src={require('../../assets/icons/xd/about/slider-2/3.png')} alt="" class="wd-100" />
                   <div class="overlay">
                     <div class="text">Hello World</div>
                   </div>
                 </div>
                 <div class="imgs">
-                  <img src="../../assets/icons/xd/about/slider-2/4.png" alt="" class="wd-100" />
+                  <img src={require('../../assets/icons/xd/about/slider-2/4.png')} alt="" class="wd-100" />
                   <div class="overlay">
                     <div class="text">Hello World</div>
                   </div>
                 </div>
                 <div class="imgs">
-                  <img src="../../assets/icons/xd/about/slider-2/5.png" alt="" class="wd-100" />
+                  <img src={require('../../assets/icons/xd/about/slider-2/5.png')} alt="" class="wd-100" />
                   <div class="overlay">
                     <div class="text">Hello World</div>
                   </div>
                 </div>
                 <div class="imgs">
-                  <img src="../../assets/icons/xd/about/slider-2/6.png" alt="" class="wd-100" />
+                  <img src={require('../../assets/icons/xd/about/slider-2/6.png')} alt="" class="wd-100" />
                   <div class="overlay">
                     <div class="text">Hello World</div>
                   </div>
                 </div>
                 <div class="imgs">
-                  <img src="../../assets/icons/xd/about/slider-2/7.png" alt="" class="wd-100" />
+                  <img src={require('../../assets/icons/xd/about/slider-2/7.png')} alt="" class="wd-100" />
                   <div class="overlay">
                     <div class="text">Hello World</div>
                   </div>
                 </div>
                 <div class="imgs">
-                  <img src="../../assets/icons/xd/about/slider-2/8.png" alt="" class="wd-100" />
+                  <img src={require('../../assets/icons/xd/about/slider-2/8.png')} alt="" class="wd-100" />
                   <div class="overlay">
                     <div class="text">Hello World</div>
                   </div>
