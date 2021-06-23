@@ -33,6 +33,120 @@ class Dashboard extends Component {
                       <i class="fa fa-filter" aria-hidden="true"></i>
                     </div>
                   </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12 filter-box" id="filter-box">
+                    <form action="#">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-3 text-left">
+                              <h3 class="mt-20 mb-50">Manufacturers</h3>
+                            </div>
+                            <div class="col-md-3 text-left">
+                              
+                            </div>
+                            <div class="col-md-3 text-left">
+                              <h3 class="mt-20 mb-50">Location</h3>
+                            </div>
+                            <div class="col-md-3 text-left">
+                              <h3 class="mt-20 mb-50">Seller Type</h3>
+                            </div>
+                              <div class="col-md-3 text-left">
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre1" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre2" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre3" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre4" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <button class="apply-filter-btn">Apply Filters</button>
+                                <button class="clear-filter-btn">Clear</button>
+                              </div>
+
+                              <div class="col-md-3 text-left">
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre1" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre2" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre3" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre4" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-3 text-left">
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre1" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre2" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre3" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre4" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-3 text-left">
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre1" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre2" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre3" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="check-styled" type="checkbox" id="Jaeger-LeCoultre4" />
+                                  <label class="check-label" for="html">Jaeger-LeCoultre <span class="circle-filter">6</span></label>
+                                </div>
+                              </div>
+                            
+                          </div>
+                        </div>
+                      </form>
+                  </div>
                 </div>
               </div>
             </div>
