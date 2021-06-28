@@ -121,49 +121,45 @@ class MainApplication extends Component {
           show={true}
           onClose={this.toggleLogin}
           centered
+          closeButton
         >
+          <CModalHeader closeButton>
+            
+          </CModalHeader>
           <CModalBody className="modalText">
-            <div class="modal-dialog login-modal" role="document">
-              <div class="modal-content">
-                <div class="modal-header login-modal-bt">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
-                    class="login-modal-button">x</span></button>
-                </div>
-                <div class="modal-body pt-0">
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <h4 class="mb-60 text-center login-modal-sign">Sign in to WatchTrade</h4>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <form action="#" class="form-control login-modal-form">
-                        <input type="text" class="form-control login-email" placeholder="Email Address" />
-                        <div class="form-group mt-20">
-                          <div class="input-group" id="show_hide_password">
-                            <input class="form-control login-password" placeholder="Password"
-                              type="password" />
-                            <div class="input-group-addon">
-                              <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <a href="#">Forget Password?</a>
-                        <button class="login-btn mt-30 mb-25" type="submit">Login to Account</button>
-                        <div class="sideline">OR</div>
-                        <div class="social-login-content mt-30 mb-25">
-                          <div class="social-button">
-                            <button class="google-btn mb-15"><i class="fab fa-google mr-20"></i>Login with
-                              Google</button>
-                            <button class="facebook-btn"><i class="fab fa-facebook mr-20"></i>Login with
-                              Facebook</button>
-                          </div>
-                        </div>
-                      </form>
-
+            
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <h4 class="mb-60 text-center login-modal-sign">Sign in to WatchTrade</h4>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <form action="#" class="form-control login-modal-form">
+                  <input type="text" class="form-control login-email" placeholder="Email Address" />
+                  <div class="form-group mt-20">
+                    <div class="input-group" id="show_hide_password">
+                      <input class="form-control login-password" placeholder="Password"
+                        type="password" />
+                      <div class="input-group-addon">
+                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <a href="#">Forget Password?</a>
+                  <button class="login-btn mt-30 mb-25" type="submit">Login to Account</button>
+                  <div class="sideline">OR</div>
+                  <div class="social-login-content mt-30 mb-25">
+                    <div class="social-button">
+                      <button class="google-btn mb-15"><i class="fab fa-google mr-20"></i>Login with
+                        Google</button>
+                      <button class="facebook-btn"><i class="fab fa-facebook mr-20"></i>Login with
+                        Facebook</button>
+                    </div>
+                  </div>
+                </form>
+
               </div>
             </div>
+               
           </CModalBody>
         </CModal>
         <CModal
