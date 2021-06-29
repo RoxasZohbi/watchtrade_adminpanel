@@ -1,10 +1,10 @@
-import { DashboardPost, DashboardDataGet, DashboardPut, DashboardDataGetById, deleteDashboardRecord } from "../Services/DashboardService";
+import { ContactUsCall, DashboardDataGet, DashboardPut, DashboardDataGetById, deleteDashboardRecord } from "../Services/DashboardService";
 
-export async function DashboardCall(data) {
+export async function ContactUsCallPost(data) {
     let body = {
        
     }
-    return await DashboardPost(body);
+    return await ContactUsCall(body);
 }
 export async function DashboardUpdateCall(id, data) {
     let body = {
