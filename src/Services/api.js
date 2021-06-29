@@ -1,5 +1,4 @@
 import { getUserCookie, redirectToLogin, deleteUserCookie } from "../helpers/AuthHelper";
-import Cookie from 'universal-cookie';
 
 export async function GetAsyncRaw(
     baseUrl,

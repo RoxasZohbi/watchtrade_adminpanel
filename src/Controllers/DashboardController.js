@@ -1,4 +1,4 @@
-import { DashboardPost, DashboardDataGet, DashboardPut, DashboardDataGetById, deleteBlotterRecord } from "../Services/DashboardService";
+import { DashboardPost, DashboardDataGet, DashboardPut, DashboardDataGetById, deleteDashboardRecord } from "../Services/DashboardService";
 
 export async function DashboardCall(data) {
     let body = {
@@ -12,9 +12,9 @@ export async function DashboardUpdateCall(id, data) {
     }
     return await DashboardPut(id, body);
 }
-export async function getDashboardDetailAll(pageNumber, pageSize) {
+export async function getDashboardDetailAll() {
 
-    return await DashboardDataGet(pageNumber, pageSize);
+    return await DashboardDataGet();
 }
 export async function getDashboardDetailById(id) {
 

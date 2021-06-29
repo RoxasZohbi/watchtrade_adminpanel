@@ -118,7 +118,7 @@ class MainApplication extends Component {
 
         <CModal
           closeOnBackdrop={false}
-          show={true}
+          show={false}
           onClose={this.toggleLogin}
           centered
         >
