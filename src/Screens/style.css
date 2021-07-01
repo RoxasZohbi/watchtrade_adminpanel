@@ -9829,3 +9829,7 @@ width: 100% !important;
   border: 1px solid #bbbbbb;
   margin-left: 10px;
 }
+/* 28-6-2021 by asees */
+.modal-content{
+  height: 575px !important;
+}

@@ -154,26 +154,48 @@ class MainApplication extends Component {
           show={this.state.loginModal}
           onClose={this.toggleLogin}
           centered
+          closeButton
         >
+<<<<<<< HEAD
           <CModalBody className="modalText modalView">
+=======
+          <CModalHeader closeButton>
+            
+          </CModalHeader>
+          <CModalBody className="modalText">
+            
+>>>>>>> ui-by-asees
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <h4 class="mb-60 text-center login-modal-sign">Sign in to WatchTrade</h4>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
+<<<<<<< HEAD
                 <form class="form-control login-modal-form">
                   <input type="text" class="form-control login-email" value={this.state.email} name="email" onChange={(ev) => this.setValue(ev)} placeholder="Email Address" />
                   <div class="form-group mt-20">
                     <div class="input-group" id="show_hide_password">
                       <input class="form-control login-password" placeholder="Password"
                         type="password" value={this.state.password} name="password" onChange={(ev) => this.setValue(ev)} />
+=======
+                <form action="#" class="form-control login-modal-form">
+                  <input type="text" class="form-control login-email" placeholder="Email Address" />
+                  <div class="form-group mt-20">
+                    <div class="input-group" id="show_hide_password">
+                      <input class="form-control login-password" placeholder="Password"
+                        type="password" />
+>>>>>>> ui-by-asees
                       <div class="input-group-addon">
                         <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                       </div>
                     </div>
                   </div>
                   <a href="#">Forget Password?</a>
+<<<<<<< HEAD
                   <button class="login-btn mt-30 mb-25" type="submit" onClick={() => this.submitForm()}>Login to Account</button>
+=======
+                  <button class="login-btn mt-30 mb-25" type="submit">Login to Account</button>
+>>>>>>> ui-by-asees
                   <div class="sideline">OR</div>
                   <div class="social-login-content mt-30 mb-25">
                     <div class="social-button">
@@ -187,6 +209,7 @@ class MainApplication extends Component {
 
               </div>
             </div>
+               
           </CModalBody>
         </CModal>
         <CModal
