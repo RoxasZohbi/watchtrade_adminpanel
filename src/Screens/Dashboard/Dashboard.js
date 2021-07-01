@@ -11,13 +11,31 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import Header from '../../Component/Header'
+import { getDashboardDetailAll } from '../../Controllers/DashboardController'
 import Footer from '../../Component/Footer'
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    };
+  }
+  componentDidMount() {
+    this.getWatchList()
+  }
+  getWatchList = async () => {
+    let res = await getDashboardDetailAll()
+    if (res) {
+      this.setState({ data: res })
+    }
+    console.log('res', res);
+
+  }
   render() {
     return (
       <>
-        <Header ChangeView={this.props.ChangeView}/>
+        <Header ChangeView={this.props.ChangeView} />
         <div class="slider-area">
           <div class="slider-active owl-carousel nav-style-1">
             <div class="single-slider slider-height-1 bg-purple">
@@ -33,7 +51,7 @@ class Dashboard extends Component {
                       <i class="fa fa-filter" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12 filter-box" id="filter-box">
+                  {/* <div class="col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12 filter-box" id="filter-box">
                     <form action="#">
                         <div class="container">
                           <div class="row">
@@ -146,7 +164,7 @@ class Dashboard extends Component {
                           </div>
                         </div>
                       </form>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -173,39 +191,44 @@ class Dashboard extends Component {
                     <option value="#">Live</option>
                   </select>
                 </div>
-                <div class="col-xl-3 col-md-3 col-lg-3 col-sm-6">
-                  <div>
-                    <h3 class="index-title"><a href="#">Breguet</a></h3>
-                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
-                    <p class="mb-10 index-title-p">Sphere Bassilica - Gray 2A7865</p>
-                  </div>
-                  <div class="product-wrap mb-25 scroll-zoom">
-                    <div class="product-img">
-                      <a href="#">
-                        <img class="default-img" src={require('../../assets/icons/xd/watches/watch-1.jpg')} alt="" />
-                        <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-1a.jpg')} alt="" />
-                      </a>
-                      <span class="pink">01:16:48</span>
-                      <div class="product-action">
-                        <div class="pro-same-action pro-wishlist">
-                          <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
+                {this.state.data.map((value) => {
+                  return (
+
+                    <div class="col-xl-3 col-md-3 col-lg-3 col-sm-6">
+                      <div>
+                        <h3 class="index-title"><a href="#">{value.name}</a></h3>
+                        <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
+                        <p class="mb-10 index-title-p">{value.name} {value.brand} - Gray {value.modelNo}</p>
+                      </div>
+                      <div class="product-wrap mb-25 scroll-zoom">
+                        <div class="product-img">
+                          <a href="#">
+                            <img class="default-img" src={require('../../assets/icons/xd/watches/watch-1.jpg')} alt="" />
+                            <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-1a.jpg')} alt="" />
+                          </a>
+                          <span class="pink">{new Date(value.auctionExpireAt).getHours()+':'+new Date(value.auctionExpireAt).getMinutes()+'+'+new Date(value.auctionExpireAt).getMilliseconds()}</span>
+                          <div class="product-action">
+                            <div class="pro-same-action pro-wishlist">
+                              <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
+                            </div>
+                            <div class="pro-same-action pro-cart">
+                              <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
+                            </div>
+                            <div class="pro-same-action pro-quickview">
+                              <a title="Quick View" href="#" data-toggle="modal"
+                                data-target="#exampleModal"><i class="pe-7s-look"></i></a>
+                            </div>
+                          </div>
                         </div>
-                        <div class="pro-same-action pro-cart">
-                          <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
-                        </div>
-                        <div class="pro-same-action pro-quickview">
-                          <a title="Quick View" href="#" data-toggle="modal"
-                            data-target="#exampleModal"><i class="pe-7s-look"></i></a>
+                        <div class="product-content">
+                          <div class="product-price">
+                            <span>$ {value.startingPrice}.00</span> <span class="price-circle">45</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="product-content">
-                      <div class="product-price">
-                        <span>$ 60.00</span> <span class="price-circle">45</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  )
+                })}
 
               </div>
             </div>
@@ -228,7 +251,7 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-        <Footer  ChangeView={this.props.ChangeView}/>
+        <Footer ChangeView={this.props.ChangeView} />
       </>
     );
   }
