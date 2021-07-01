@@ -17,7 +17,7 @@ class WatchDetailLostAuction extends Component {
     render() {
         return (
             <>
-                <Header ChangeView={this.props.ChangeView}/>
+                <Header ChangeView={this.props.ChangeView} toggleLogin={this.props.toggleLogin}/>
 
                 <div class="container-fluid pt-50 pb-50 bg-all dark-color">
                     <div class="container">

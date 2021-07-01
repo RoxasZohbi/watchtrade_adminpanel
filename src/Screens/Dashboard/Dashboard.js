@@ -35,7 +35,7 @@ class Dashboard extends Component {
   render() {
     return (
       <>
-        <Header ChangeView={this.props.ChangeView} />
+        <Header ChangeView={this.props.ChangeView} toggleLogin={this.props.toggleLogin}/>
         <div class="slider-area">
           <div class="slider-active owl-carousel nav-style-1">
             <div class="single-slider slider-height-1 bg-purple">

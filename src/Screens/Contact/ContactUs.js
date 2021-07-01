@@ -55,7 +55,7 @@ class ContactUs extends Component {
     render() {
         return (
             <>
-                <Header ChangeView={this.props.ChangeView} />
+                <Header ChangeView={this.props.ChangeView} toggleLogin={this.props.toggleLogin}/>
                 <div class="container-fluid contact-main-cont">
                     <div class="container">
                         <div class="row">

@@ -18,7 +18,7 @@ class AccountBilling extends Component {
     render() {
         return (
             <>
-                <Header />
+                <Header toggleLogin={this.props.toggleLogin}/>
                 <div class="container-fluid pt-100 bg-all">
                     <div class="container">
                         <div class="row">

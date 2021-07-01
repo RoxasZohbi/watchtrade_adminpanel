@@ -21,6 +21,8 @@ import NoWatchState from './NoWatchState/NoWatchState'
 import SellWatch from './SellWatch/SellWatch'
 import AccountBid from './AccountBid/AccountBid'
 import AccountBilling from './AccountBilling/AccountBilling'
+import Cookie from 'universal-cookie';
+import { toast } from 'react-toastify';
 import AccountListing from './AccountListing/AccountListing'
 import {
   CModal,
@@ -35,12 +37,16 @@ import WatchDetailLostAuction from './WatchDetailLostAuction/WatchDetailLostAuct
 import WatchDetailWonAuction from './WatchDetailWonAuction/WatchDetailWonAuction'
 import WatchDetailWonAuction1 from './WatchDetailWonAuction1/WatchDetailWonAuction1'
 import WatchDetail from './WatchDetail/WatchDetail'
+import { LoginPost } from '../Controllers/DashboardController'
 
 class MainApplication extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      screen: "Dashboard"
+      screen: "Dashboard",
+      email: "",
+      password: "",
+      loginModal: false
     };
 
   }
@@ -90,78 +96,95 @@ class MainApplication extends Component {
     }
   }
   toggleLogin = () => {
-
+    this.setState({ loginModal: !this.state.loginModal })
   }
   toggleProductDetail = () => {
 
   }
+  setValue = (event) => {
+    let target = event.target;
+    if (target.name === "email") {
+      this.setState({ email: target.value })
+    }
+    if (target.name === "password") {
+      this.setState({ password: target.value })
+    }
 
+  }
+  submitForm = async () => {
+    var cookie = new Cookie();
+    if (this.state.email !== "" && this.state.password !== "") {
+      let res = await LoginPost(this.state.email, this.state.password)
+      if (res) {
+        var userCookie = {
+          accessToken: res.token,
+          refreshToken: ""
+        };
+        cookie.set("user", JSON.stringify(userCookie));
+        localStorage.setItem('userDetail', JSON.stringify(res.user));
+        console.log(res);
+        this.toggleLogin()
+      }
+    } else {
+      alert('Invalid Username/Password.')
+    }
+  }
   render() {
     return (
       <>
-        {this.state.screen === "Dashboard" && <Dashboard ChangeView={this.ChangeView} />}
-        {this.state.screen === "About" && <About ChangeView={this.ChangeView} />}
-        {this.state.screen === "Faqs" && <Faqs ChangeView={this.ChangeView} />}
-        {this.state.screen === "ContactUs" && <ContactUs ChangeView={this.ChangeView} />}
-        {this.state.screen === "SellWatch" && <SellWatch ChangeView={this.ChangeView} />}
-        {this.state.screen === "AccountBid" && <AccountBid ChangeView={this.ChangeView} />}
-        {this.state.screen === "AccountListing" && <AccountListing ChangeView={this.ChangeView} />}
-        {this.state.screen === "AccountBilling" && <AccountBilling ChangeView={this.ChangeView} />}
-        {this.state.screen === "AccountProfile" && <AccountProfile ChangeView={this.ChangeView} />}
-        {this.state.screen === "AccountWatchList" && <AccountWatchList ChangeView={this.ChangeView} />}
-        {this.state.screen === "WatchDetailLostAuction" && <WatchDetailLostAuction ChangeView={this.ChangeView} />}
-        {this.state.screen === "WatchDetailWonAuction" && <WatchDetailWonAuction ChangeView={this.ChangeView} />}
-        {this.state.screen === "WatchDetailWonAuction1" && <WatchDetailWonAuction1 ChangeView={this.ChangeView} />}
-        {this.state.screen === "WatchDetail" && <WatchDetail ChangeView={this.ChangeView} />}
+        {this.state.screen === "Dashboard" && <Dashboard ChangeView={this.ChangeView} toggleLogin={this.toggleLogin} />}
+        {this.state.screen === "About" && <About ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "Faqs" && <Faqs ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "ContactUs" && <ContactUs ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "SellWatch" && <SellWatch ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "AccountBid" && <AccountBid ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "AccountListing" && <AccountListing ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "AccountBilling" && <AccountBilling ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "AccountProfile" && <AccountProfile ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "AccountWatchList" && <AccountWatchList ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "WatchDetailLostAuction" && <WatchDetailLostAuction ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "WatchDetailWonAuction" && <WatchDetailWonAuction ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "WatchDetailWonAuction1" && <WatchDetailWonAuction1 ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
+        {this.state.screen === "WatchDetail" && <WatchDetail ChangeView={this.ChangeView} toggleLogin={this.toggleLogin}/>}
 
 
 
         <CModal
-          closeOnBackdrop={false}
-          show={false}
+          closeOnBackdrop={true}
+          show={this.state.loginModal}
           onClose={this.toggleLogin}
           centered
         >
-          <CModalBody className="modalText">
-            <div class="modal-dialog login-modal" role="document">
-              <div class="modal-content">
-                <div class="modal-header login-modal-bt">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
-                    class="login-modal-button">x</span></button>
-                </div>
-                <div class="modal-body pt-0">
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <h4 class="mb-60 text-center login-modal-sign">Sign in to WatchTrade</h4>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <form action="#" class="form-control login-modal-form">
-                        <input type="text" class="form-control login-email" placeholder="Email Address" />
-                        <div class="form-group mt-20">
-                          <div class="input-group" id="show_hide_password">
-                            <input class="form-control login-password" placeholder="Password"
-                              type="password" />
-                            <div class="input-group-addon">
-                              <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <a href="#">Forget Password?</a>
-                        <button class="login-btn mt-30 mb-25" type="submit">Login to Account</button>
-                        <div class="sideline">OR</div>
-                        <div class="social-login-content mt-30 mb-25">
-                          <div class="social-button">
-                            <button class="google-btn mb-15"><i class="fab fa-google mr-20"></i>Login with
-                              Google</button>
-                            <button class="facebook-btn"><i class="fab fa-facebook mr-20"></i>Login with
-                              Facebook</button>
-                          </div>
-                        </div>
-                      </form>
-
+          <CModalBody className="modalText modalView">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <h4 class="mb-60 text-center login-modal-sign">Sign in to WatchTrade</h4>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <form class="form-control login-modal-form">
+                  <input type="text" class="form-control login-email" value={this.state.email} name="email" onChange={(ev) => this.setValue(ev)} placeholder="Email Address" />
+                  <div class="form-group mt-20">
+                    <div class="input-group" id="show_hide_password">
+                      <input class="form-control login-password" placeholder="Password"
+                        type="password" value={this.state.password} name="password" onChange={(ev) => this.setValue(ev)} />
+                      <div class="input-group-addon">
+                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <a href="#">Forget Password?</a>
+                  <button class="login-btn mt-30 mb-25" type="submit" onClick={() => this.submitForm()}>Login to Account</button>
+                  <div class="sideline">OR</div>
+                  <div class="social-login-content mt-30 mb-25">
+                    <div class="social-button">
+                      <button class="google-btn mb-15"><i class="fab fa-google mr-20"></i>Login with
+                        Google</button>
+                      <button class="facebook-btn"><i class="fab fa-facebook mr-20"></i>Login with
+                        Facebook</button>
+                    </div>
+                  </div>
+                </form>
+
               </div>
             </div>
           </CModalBody>
@@ -185,27 +208,27 @@ class MainApplication extends Component {
                       <div class="col-md-5 col-sm-12 col-xs-12">
                         <div class="tab-content quickview-big-img">
                           <div id="pro-1" class="tab-pane fade show active">
-                            <img src={require('../assets/img/product/quickview-l1.jpg')}  alt="" />
+                            <img src={require('../assets/img/product/quickview-l1.jpg')} alt="" />
                           </div>
                           <div id="pro-2" class="tab-pane fade">
                             <img src={require('../assets/img/product/quickview-l2.jpg')} alt="" />
                           </div>
                           <div id="pro-3" class="tab-pane fade">/
-                            <img src={require('../assets/img/product/quickview-l3.jpg')}  alt="" />
+                            <img src={require('../assets/img/product/quickview-l3.jpg')} alt="" />
                           </div>
                           <div id="pro-4" class="tab-pane fade">
-                            <img src={require('../assets/img/product/quickview-l2.jpg')}  alt="" />
+                            <img src={require('../assets/img/product/quickview-l2.jpg')} alt="" />
                           </div>
                         </div>
                         <div class="quickview-wrap mt-15">
                           <div class="quickview-slide-active owl-carousel nav nav-style-1" role="tablist">
                             <a class="active" data-toggle="tab" href="#pro-1"><img
                               src={require('../assets/img/product/quickview-s1.jpg')} alt="" /></a>
-                            <a data-toggle="tab" href="#pro-2"><img src={require('../assets/img/product/quickview-s2.jpg')} 
+                            <a data-toggle="tab" href="#pro-2"><img src={require('../assets/img/product/quickview-s2.jpg')}
                               alt="" /></a>
-                            <a data-toggle="tab" href="#pro-3"><img src={require('../assets/img/product/quickview-s3.jpg')} 
+                            <a data-toggle="tab" href="#pro-3"><img src={require('../assets/img/product/quickview-s3.jpg')}
                               alt="" /></a>
-                            <a data-toggle="tab" href="#pro-4"><img src={require('../assets/img/product/quickview-s2.jpg')} 
+                            <a data-toggle="tab" href="#pro-4"><img src={require('../assets/img/product/quickview-s2.jpg')}
                               alt="" /></a>
                           </div>
                         </div>

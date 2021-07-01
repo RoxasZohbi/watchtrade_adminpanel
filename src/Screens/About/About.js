@@ -17,7 +17,7 @@ class Dashboard extends Component {
   render() {
     return (
       <>
-        <Header  ChangeView={this.props.ChangeView}/>
+        <Header  ChangeView={this.props.ChangeView} toggleLogin={this.props.toggleLogin}/>
 
         <div class="container-fluid about-main-cont">
           <div class="container">
