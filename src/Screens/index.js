@@ -156,19 +156,24 @@ class MainApplication extends Component {
           show={this.state.loginModal}
           onClose={this.toggleLogin}
           centered
+          closeButton
         >
-          <CModalBody className="modalText modalView">
+          <CModalHeader closeButton>
+            
+          </CModalHeader>
+          <CModalBody className="modalText">
+            
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <h4 class="mb-60 text-center login-modal-sign">Sign in to WatchTrade</h4>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <form class="form-control login-modal-form">
-                  <input type="text" class="form-control login-email" value={this.state.email} name="email" onChange={(ev) => this.setValue(ev)} placeholder="Email Address" />
+                <form action="#" class="form-control login-modal-form">
+                  <input type="text" class="form-control login-email" placeholder="Email Address" />
                   <div class="form-group mt-20">
                     <div class="input-group" id="show_hide_password">
                       <input class="form-control login-password" placeholder="Password"
-                        type="password" value={this.state.password} name="password" onChange={(ev) => this.setValue(ev)} />
+                        type="password" />
                       <div class="input-group-addon">
                         <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                       </div>
@@ -189,6 +194,7 @@ class MainApplication extends Component {
 
               </div>
             </div>
+               
           </CModalBody>
         </CModal>
         <CModal
