@@ -116,6 +116,7 @@ class MainApplication extends Component {
     if (this.state.email !== "" && this.state.password !== "") {
       let res = await LoginPost(this.state.email, this.state.password)
       if (res) {
+        this.setState({loginModal:false})
         var userCookie = {
           accessToken: res.token,
           refreshToken: ""
@@ -123,7 +124,8 @@ class MainApplication extends Component {
         cookie.set("user", JSON.stringify(userCookie));
         localStorage.setItem('userDetail', JSON.stringify(res.user));
         console.log(res);
-        this.toggleLogin()
+        this.ChangeView("AccountProfile")
+        // this.toggleLogin()
       }
     } else {
       alert('Invalid Username/Password.')
@@ -173,7 +175,7 @@ class MainApplication extends Component {
                     </div>
                   </div>
                   <a href="#">Forget Password?</a>
-                  <button class="login-btn mt-30 mb-25" type="submit" onClick={() => this.submitForm()}>Login to Account</button>
+                  <button class="login-btn mt-30 mb-25"  onClick={() => this.submitForm()}>Login to Account</button>
                   <div class="sideline">OR</div>
                   <div class="social-login-content mt-30 mb-25">
                     <div class="social-button">
