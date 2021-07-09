@@ -44,7 +44,7 @@ class MainApplication extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      screen: "AccountListing",
+      screen: "Dashboard",
       email: "",
       password: "",
       loginModal: false
@@ -131,7 +131,6 @@ class MainApplication extends Component {
                 refreshToken: ""
               };
               await localForage.setItem("accessToken", JSON.stringify(res.data.token));
-              // localStorage.setItem('userDetail', JSON.stringify(res));
               console.log(res);
               toast.success('Login Successfully')
               this.ChangeView("AccountProfile")
