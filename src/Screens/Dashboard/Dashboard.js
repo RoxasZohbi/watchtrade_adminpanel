@@ -11,14 +11,16 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import Header from '../../Component/Header'
-import { getDashboardDetailAll,addToWishList } from '../../Controllers/DashboardController'
+import { getDashboardDetailAll, addToWishList } from '../../Controllers/DashboardController'
 import Footer from '../../Component/Footer'
+import { toast } from 'react-toastify'
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      addWish: []
     };
   }
   componentDidMount() {
@@ -31,11 +33,26 @@ class Dashboard extends Component {
     }
     console.log('res', res);
   }
-  addWatchList = async(id) => {
-    
-    let res = await addToWishList(id)
-   
-    console.log('res', res);
+  addWatchList = async (id) => {
+    let list = [...this.state.addWish, id]
+    this.setState({ addWish: list })
+    await addToWishList(id).then(resp =>
+      resp.json().then(data => ({
+        data: data,
+        status: resp.status
+      }))).then(async res => {
+        console.log(res.data.user);
+        if (res) {
+          toast.success(res.data.message)
+          console.log('res', res);
+
+        }
+      }).catch((err) => {
+        this.setState({ isLoading: false })
+        toast.error(err)
+
+      })
+
   }
   render() {
     return (
@@ -208,8 +225,8 @@ class Dashboard extends Component {
                       <div class="product-wrap mb-25 scroll-zoom">
                         <div class="product-img">
                           <a >
-                            <img class="default-img" src={'https://watchtrade-api.herokuapp.com'+value.images[0]} alt="" />
-                            <img class="hover-img" src={'https://watchtrade-api.herokuapp.com'+value.images[1]} alt="" />
+                            <img class="default-img" src={'https://watchtrade-api.herokuapp.com' + value.images[0]} alt="" />
+                            <img class="hover-img" src={'https://watchtrade-api.herokuapp.com' + value.images[1]} alt="" />
                           </a>
                           <span class="pink">{new Date(value.auctionExpireAt).getHours() + ':' + new Date(value.auctionExpireAt).getMinutes() + '+' + new Date(value.auctionExpireAt).getMilliseconds()}</span>
                           <div class="product-action">
@@ -220,8 +237,8 @@ class Dashboard extends Component {
                               <a title="Add To WatchList" ><i class="pe-7s-cart"></i> Add To WatchList</a>
                             </div>
                             <div class="pro-same-action pro-quickview">
-                              <a title="Quick View"  data-toggle="modal"
-                                ><i class="pe-7s-look"></i></a>
+                              <a title="Quick View" data-toggle="modal"
+                              ><i class="pe-7s-look"></i></a>
                             </div>
                           </div>
                         </div>
@@ -247,7 +264,7 @@ class Dashboard extends Component {
                   <h2 class="white">Subscribe to our Newsletter</h2>
                   <p class="white">But I must explain to you how all this mistaken idea of
                     denouncing pleasure and praising pain was born.</p>
-                  <form  class="form-control index-blog-form">
+                  <form class="form-control index-blog-form">
                     <input type="text" name="foot" id="foot" placeholder="Email Address" />
                     <input type="submit" value="Subscribe Now" class="btn btn-primary index-blog-input" />
                   </form>

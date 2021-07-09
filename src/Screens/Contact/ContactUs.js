@@ -13,6 +13,7 @@ import CIcon from '@coreui/icons-react'
 import Header from '../../Component/Header'
 import Footer from '../../Component/Footer'
 import { ContactUsCallPost } from '../../Controllers/DashboardController'
+import {toast} from 'react-toastify'
 
 class ContactUs extends Component {
     constructor(props) {
@@ -49,7 +50,23 @@ class ContactUs extends Component {
      }
     }
     submitForm =async()=>{
-        let res = await ContactUsCallPost(this.state)
+       await ContactUsCallPost(this.state).then(resp =>
+            resp.json().then(data => ({
+              data: data,
+              status: resp.status
+            }))).then(async res => {
+              console.log(res.data.user);
+              if (res) {
+                toast.success('Your information recorded successfully.')
+                console.log('res', res);
+      
+              }
+            }).catch((err) => {
+              this.setState({ isLoading: false })
+              toast.error(err)
+      
+            })
+      
         console.log(this.state);
     }
     render() {
