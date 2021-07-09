@@ -1,4 +1,4 @@
-import { updateProfilePost } from "../Services/UserBidPanelService";
+import { updateProfilePost,userBidListingGet } from "../Services/UserBidPanelService";
 
 export async function updateProfile(data) {
     let body = {
@@ -8,4 +8,8 @@ export async function updateProfile(data) {
        email:data.email
     }
     return await updateProfilePost(body);
+}
+export async function userBidListing(userId) {
+
+    return await userBidListingGet(userId);
 }

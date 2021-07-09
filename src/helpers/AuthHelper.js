@@ -1,5 +1,6 @@
 
 import Cookie from 'universal-cookie';
+import localForage from 'localforage';
 
 export function isAuthenticated() {
     var isAuthenticated = false;
@@ -24,11 +25,24 @@ export function deleteUserCookie() {
 export function getUserCookie() {
     var cookie = new Cookie();
     var userCookie = cookie.get("user");
+    console.log('userCokk', userCookie);
     if (!userCookie) {
         userCookie = {};
     }
 
     return userCookie;
+}
+export async function getUserToken() {
+    let accessToken = await localForage.getItem('accessToken');
+    let details = JSON.parse(accessToken)
+    // var cookie = new Cookie();
+    // var userCookie = cookie.get("user");
+    // console.log('userCokk',userCookie);
+    if (!details) {
+        details = {};
+    }
+
+    return details;
 }
 
 export function redirectToLogin() {

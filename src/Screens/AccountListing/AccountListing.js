@@ -12,13 +12,35 @@ import {
 import CIcon from '@coreui/icons-react'
 import Header from '../../Component/Header'
 import Footer from '../../Component/Footer'
+import localForage from 'localforage';
 import AccountSideBar from '../../Component/AccountSideBar'
+import { userBidListing } from '../../Controllers/UserBidPanel'
 
 class AccountListing extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            liveStatus:0,
+            notLiveStatus:0
+        };
+    }
+    async componentDidMount() {
+        let userDetail = await localForage.getItem('userDetail');
+        let details = JSON.parse(userDetail)
+        let res = await userBidListing(details._id)
+        let liveStatus =  res.filter((value)=>value.status === 'live')
+        let notLiveStatus =  res.filter((value)=>value.status !== 'live')
+        
+        this.setState({ data: res,liveStatus:liveStatus.length,notLiveStatus:notLiveStatus.length })
+        console.log('==--s>', res);
+    }
+
+
     render() {
         return (
             <>
-                <Header ChangeView={this.props.ChangeView} toggleLogin={this.props.toggleLogin}/>
+                <Header ChangeView={this.props.ChangeView} toggleLogin={this.props.toggleLogin} />
                 <div class="container-fluid pt-100 bg-all">
                     <div class="container">
                         <div class="row">
@@ -30,7 +52,7 @@ class AccountListing extends Component {
 
                                 <h2 class="mt-25 account-bid-h2">@marcussmith</h2>
                                 <h6 class="fs-16">Marcus Smith</h6>
-                                <AccountSideBar ChangeView={this.props.ChangeView} listing={true}/>
+                                <AccountSideBar ChangeView={this.props.ChangeView} listing={true} />
 
                                 {/* <div class="mt-40">
                                     <ul class="side-nav">
@@ -66,130 +88,78 @@ class AccountListing extends Component {
                                     <div id="faq" class="panel-group">
                                         <div class="panel panel-default single-my-account">
                                             <div class="panel-heading my-account-title">
-                                                <h3 class="panel-title"><a data-toggle="collapse" data-parent="#faq" href="#my-account-1">My Live Listings <div class="numberCircle">30</div></a> </h3>
+                                                <h3 class="panel-title"><a data-toggle="collapse" data-parent="#faq" href="#my-account-1">My Live Listings <div class="numberCircle">{this.state.liveStatus}</div></a> </h3>
                                             </div>
                                             <div id="my-account-1" class="panel-collapse collapse show">
                                                 <div class="panel-body">
                                                     <div class="myaccount-info-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-lg-3">
-                                                                <img src={require('../../assets/icons/xd/watches/watch-1.jpg')} alt="" class="wd-100" />
-                                                            </div>
-                                                            <div class="col-lg-5 col-lg-5">
-                                                                <div>
-                                                                    <h2 class="acc-bid-h2">Breguet</h2>
-                                                                    <img class="flags2" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
-                                                                </div>
-                                                                <p class="wd-75">Caslito Chronometer Belgium Stone 23SJF65</p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-lg-2 acc-bid-div">
-                                                                <h2 class="fs-22">$45,000</h2>
-                                                                <p>7 hours ago</p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-lg-2 text-center">
-                                                                <h2 class="fs-22">24:32:01</h2>
-                                                                <p>Time Left</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr />
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-lg-3">
-                                                                <img src={require('../../assets/icons/xd/watches/watch-10.jpg')} alt="" class="wd-100" />
-                                                            </div>
-                                                            <div class="col-lg-5 col-lg-5">
-                                                                <div>
-                                                                    <h2 class="acc-bid-h2">Panerai</h2>
-                                                                    <img class="flags2" src={require('../../assets/flags/cn.png')} alt="China Flag" />
-                                                                </div>
-                                                                <p class="wd-75">Luminor Marina Automatic -2805JD</p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-lg-2 acc-bid-div">
-                                                                <h2 class="fs-22">$63,000</h2>
-                                                                <p>a day ago</p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-lg-2 text-center">
-                                                                <h2 class="fs-22">16:00:01</h2>
-                                                                <p>Time Left</p>
-                                                            </div>
-                                                        </div>
+                                                        {this.state.data.map((value) => {
+                                                            return (
+                                                                value.status === 'live' ?
+                                                                    <>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-lg-3">
+                                                                                <img src={'https://watchtrade-api.herokuapp.com'+value.images[0]} alt="" class="wd-100" />
+                                                                            </div>
+                                                                            <div class="col-lg-5 col-lg-5">
+                                                                                <div>
+                                                                                    <h2 class="acc-bid-h2">{value.name}</h2>
+                                                                                    <img class="flags2" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
+                                                                                </div>
+                                                                                {/* <p class="wd-75">Caslito Chronometer Belgium Stone 23SJF65</p> */}
+                                                                                <p class="wd-75">{value.name + ' ' + value.brand + ' ' + value.modelNo}</p>
+                                                                            </div>
+                                                                            <div class="col-lg-2 col-lg-2 acc-bid-div">
+                                                                                <h2 class="fs-22">${value.startingPrice}</h2>
+                                                                                <p>7 hours ago</p>
+                                                                            </div>
+                                                                            <div class="col-lg-2 col-lg-2 text-center">
+                                                                                {/* <h2 class="fs-22">{new Date(value.created_at).getHours() + ':' + new Date(value.created_at).getMinutes() + '+' + new Date(value.created_at).getMilliseconds()}</h2> */}
+                                                                                <h2 class="fs-22">{`${new Date(value.auctionExpireAt).getHours()} : ${new Date(value.auctionExpireAt).getMinutes()} : ${new Date(value.auctionExpireAt).getMilliseconds()}`}</h2>
+                                                                                <p>Time Left</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr />
+                                                                    </> :
+                                                                    null
+                                                            )
+                                                        })}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-default single-my-account">
                                             <div class="panel-heading my-account-title">
-                                                <h3 class="panel-title"><a data-toggle="collapse" data-parent="#faq" href="#my-account-2">My Close Listings <div class="numberCircle">4</div></a></h3>
+                                                <h3 class="panel-title"><a data-toggle="collapse" data-parent="#faq" href="#my-account-2">My Close Listings <div class="numberCircle">{this.state.notLiveStatus}</div></a></h3>
                                             </div>
                                             <div id="my-account-2" class="panel-collapse collapse show">
                                                 <div class="panel-body">
                                                     <div class="myaccount-info-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-lg-3">
-                                                                <img src={require('../../assets/icons/xd/watches/watch-4.jpg')} alt="" class="wd-100" />
-                                                            </div>
-                                                            <div class="col-lg-7 col-lg-7">
-                                                                <div>
-                                                                    <h2 class="acc-bid-h2">Bremont</h2>
-                                                                    <img class="flags2" src={require('../../assets/flags/us.png')} alt="USA Flag" />
-                                                                </div>
-                                                                <p class="wd-75">Sunlight Travel Halking</p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-lg-2 text-right">
-                                                                <h2 class="fs-22">$55,000</h2>
-                                                                <p>Sold Price</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr />
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-lg-3">
-                                                                <img src={require('../../assets/icons/xd/watches/watch-5.jpg')} alt="" class="wd-100" />
-                                                            </div>
-                                                            <div class="col-lg-7 col-lg-7">
-                                                                <div>
-                                                                    <h2 class="acc-bid-h2">Panerai</h2>
-                                                                    <img class="flags2" src={require('../../assets/flags/vc.png')} alt="USA Flag" />
-                                                                </div>
-                                                                <p class="wd-75">Radiomir GMT Power Reserve - 94JF03</p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-lg-2 text-right">
-                                                                <h2 class="fs-22">$15,000</h2>
-                                                                <p>Sold Price</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr />
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-lg-3">
-                                                                <img src={require('../../assets/icons/xd/watches/watch-7.jpg')} alt="" class="wd-100" />
-                                                            </div>
-                                                            <div class="col-lg-7 col-lg-7">
-                                                                <div>
-                                                                    <h2 class="acc-bid-h2">Tudor</h2>
-                                                                    <img class="flags2" src={require('../../assets/flags/al.png')} alt="USA Flag" />
-                                                                </div>
-                                                                <p class="wd-75">Radiomir GMT Power Reserve - 94JF03</p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-lg-2 text-right">
-                                                                <h2 class="fs-22">$67,000</h2>
-                                                                <p>Sold Price</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr />
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-lg-3">
-                                                                <img src={require('../../assets/icons/xd/watches/watch-8.jpg')} alt="" class="wd-100" />
-                                                            </div>
-                                                            <div class="col-lg-7 col-lg-7">
-                                                                <div>
-                                                                    <h2 class="acc-bid-h2">Tudor</h2>
-                                                                    <img class="flags2" src={require('../../assets/flags/bg.png')} alt="USA Flag" />
-                                                                </div>
-                                                                <p class="wd-75">Radiomir GMT Power Reserve - 94JF03</p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-lg-2 text-right">
-                                                                <h2 class="fs-22">$45,000</h2>
-                                                                <p>Sold Price</p>
-                                                            </div>
-                                                        </div>
+                                                        {this.state.data.map((value) => {
+                                                            return (
+                                                                value.status !== 'live' ?
+                                                                    <>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-lg-3">
+                                                                                <img src={'https://watchtrade-api.herokuapp.com'+value.images[0]} alt="" class="wd-100" />
+                                                                            </div>
+                                                                            <div class="col-lg-7 col-lg-7">
+                                                                                <div>
+                                                                                    <h2 class="acc-bid-h2">{value.name}</h2>
+                                                                                    <img class="flags2" src={require('../../assets/flags/us.png')} alt="USA Flag" />
+                                                                                </div>
+                                                                                <p class="wd-75">{value.name + ' ' + value.brand + ' ' + value.modelNo}</p>
+                                                                            </div>
+                                                                            <div class="col-lg-2 col-lg-2 text-right">
+                                                                                <h2 class="fs-22">${value.startingPrice}</h2>
+                                                                                <p>Sold Price</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr />
+                                                                    </>
+                                                                    : null
+                                                            )
+                                                        })}
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,7 +170,7 @@ class AccountListing extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer ChangeView={this.props.ChangeView}/>
+                <Footer ChangeView={this.props.ChangeView} />
             </>
         );
     }

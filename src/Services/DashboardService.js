@@ -4,7 +4,7 @@ export async function ContactUsCall(body) {
   return await PostAsync(`${process.env.REACT_APP_BASE_URL}/leads/create`, body, true);
 }
 export async function loginCallPost(body) {
-  return await PostAsync(`${process.env.REACT_APP_BASE_URL}/authentication`, body, true);
+  return await PostAsync(`${process.env.REACT_APP_BASE_URL}/authentication`, body, false);
 }
 export async function DashboardPut(id, body) {
   return await PutAsync(`${process.env.REACT_APP_BASE_URL}/Dashboard/PutDashboard?id=${id}`, body, true);

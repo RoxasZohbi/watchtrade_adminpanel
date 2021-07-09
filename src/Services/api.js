@@ -1,4 +1,4 @@
-import { getUserCookie, redirectToLogin, deleteUserCookie } from "../helpers/AuthHelper";
+import { getUserCookie, redirectToLogin, deleteUserCookie,getUserToken } from "../helpers/AuthHelper";
 
 export async function GetAsyncRaw(
     baseUrl,
@@ -247,12 +247,11 @@ export async function PostWithFormDataAsync(
 
 async function validateAccessToken() {
     // return accessToken if not expired
-    var userCookie = getUserCookie();
-    var accessToken = userCookie.accessToken;
+    var userCookie = getUserToken();
+    var accessToken = userCookie;
     if (!accessToken) {
-        window.location.href = "/login";
+        window.location.href = "/";
     }
-
     return accessToken;
 
     // get refresh token

@@ -208,8 +208,8 @@ class Dashboard extends Component {
                       <div class="product-wrap mb-25 scroll-zoom">
                         <div class="product-img">
                           <a >
-                            <img class="default-img" src={require('../../assets/icons/xd/watches/watch-1.jpg')} alt="" />
-                            <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-1a.jpg')} alt="" />
+                            <img class="default-img" src={'https://watchtrade-api.herokuapp.com'+value.images[0]} alt="" />
+                            <img class="hover-img" src={'https://watchtrade-api.herokuapp.com'+value.images[1]} alt="" />
                           </a>
                           <span class="pink">{new Date(value.auctionExpireAt).getHours() + ':' + new Date(value.auctionExpireAt).getMinutes() + '+' + new Date(value.auctionExpireAt).getMilliseconds()}</span>
                           <div class="product-action">

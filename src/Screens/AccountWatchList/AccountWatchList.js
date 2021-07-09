@@ -12,13 +12,32 @@ import {
 import CIcon from '@coreui/icons-react'
 import Header from '../../Component/Header'
 import Footer from '../../Component/Footer'
-import AccountSideBar from '../../Component/AccountSideBar'
+import localForage from 'localforage';
 
+import AccountSideBar from '../../Component/AccountSideBar'
+import { userBidListing } from '../../Controllers/UserBidPanel'
 class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            liveStatus: 0,
+            notLiveStatus: 0
+        };
+    }
+    async componentDidMount() {
+        let userDetail = await localForage.getItem('userDetail');
+        let details = JSON.parse(userDetail)
+        let res = await userBidListing(details._id)
+
+        this.setState({ data: res })
+        console.log('==--s>', res);
+    }
     render() {
+        const secondColumnStart = this.state.data.length / 2;
         return (
             <>
-                <Header ChangeView={this.props.ChangeView} toggleLogin={this.props.toggleLogin}/>
+                <Header ChangeView={this.props.ChangeView} toggleLogin={this.props.toggleLogin} />
                 <div class="container-fluid pt-100 bg-all">
                     <div class="container">
                         <div class="row">
@@ -30,8 +49,8 @@ class Dashboard extends Component {
 
                                 <h2 class="mt-25 account-bid-h2">@marcussmith</h2>
                                 <h6 class="fs-16">Marcus Smith</h6>
-                                <AccountSideBar ChangeView={this.props.ChangeView} watchlist={true}/>
-                              
+                                <AccountSideBar ChangeView={this.props.ChangeView} watchlist={true} />
+
                                 {/* <div class="mt-40">
                                     <ul class="side-nav">
                                         <li>
@@ -71,225 +90,93 @@ class Dashboard extends Component {
                                             <div id="my-account-1" class="panel-collapse collapse show">
                                                 <div class="panel-body">
                                                     <div class="myaccount-info-wrapper">
-                                                        <div class="row">
-                                                            <div class="col-xl-5 col-md-5 col-lg-5 col-sm-6">
-                                                                <div>
-                                                                    <h3 class="account-watchlist-div"><a href="#">Breguet</a></h3>
-                                                                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
-                                                                    <p class="account-watchlist-p">Sphere Bassilica - Gray 2A7865</p>
-                                                                </div>
+                                                        {this.state.data.map((value, index) => {
 
-                                                                <div class="product-wrap mb-25 scroll-zoom">
-                                                                    <div class="product-img">
-                                                                        <a href="#">
-                                                                            <img class="default-img" src={require('../../assets/icons/xd/watches/watch-2.jpg')} alt="" />
-                                                                            <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-2a.jpg')} alt="" />
-                                                                        </a>
-                                                                        <span class="purple">01:16:48</span>
-                                                                        <div class="product-action">
-                                                                            <div class="pro-same-action pro-wishlist">
-                                                                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-cart">
-                                                                                <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-quickview">
-                                                                                <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i class="pe-7s-look"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-content">
+                                                            console.log(index);
+                                                            return (
+                                                                <div class="row">
+                                                                    {(index == 0 || index === secondColumnStart) ?
+                                                                        <>
+                                                                            <div class="col-xl-5 col-md-5 col-lg-5 col-sm-6">
+                                                                                <div>
+                                                                                    <h3 class="account-watchlist-div"><a href="#">{value.name}</a></h3>
+                                                                                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
+                                                                                    <p class="account-watchlist-p">{value.name + ' ' + value.brand + ' ' + value.modelNo}</p>
+                                                                                </div>
 
-                                                                        <div class="product-price">
-                                                                            <span class="prod-price-watchlist">$ 60.00</span> <span class="price-circle">4</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
-                                                            </div>
-                                                            <div class="col-xl-5 col-md-5 col-lg-5 col-sm-6">
-                                                                <div>
-                                                                    <h3 class="account-watchlist-div"><a href="#">Breguet</a></h3>
-                                                                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
-                                                                    <p class="account-watchlist-p">Sphere Bassilica - Gray 2A7865</p>
-                                                                </div>
+                                                                                <div class="product-wrap mb-25 scroll-zoom">
+                                                                                    <div class="product-img">
+                                                                                        <a href="#">
+                                                                                            <img class="default-img" src={'https://watchtrade-api.herokuapp.com' + value.images[0]} alt="" />
+                                                                                            <img class="hover-img" src={'https://watchtrade-api.herokuapp.com' + value.images[1]} alt="" />
+                                                                                        </a>
+                                                                                        <span class="purple">{`${new Date(value.created_at).getHours()} : ${new Date(value.created_at).getMinutes()} : ${new Date(value.created_at).getMilliseconds()}`}</span>
+                                                                                        <div class="product-action">
+                                                                                            <div class="pro-same-action pro-wishlist">
+                                                                                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
+                                                                                            </div>
+                                                                                            <div class="pro-same-action pro-cart">
+                                                                                                <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
+                                                                                            </div>
+                                                                                            <div class="pro-same-action pro-quickview">
+                                                                                                <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i class="pe-7s-look"></i></a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="product-content">
 
-                                                                <div class="product-wrap mb-25 scroll-zoom">
-                                                                    <div class="product-img">
-                                                                        <a href="#">
-                                                                            <img class="default-img" src={require('../../assets/icons/xd/watches/watch-3.jpg')} alt="" />
-                                                                            <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-3a.jpg')} alt="" />
-                                                                        </a>
-                                                                        <span class="pink">01:16:48</span>
-                                                                        <div class="product-action">
-                                                                            <div class="pro-same-action pro-wishlist">
-                                                                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
+                                                                                        <div class="product-price">
+                                                                                            <span class="prod-price-watchlist">${value.startingPrice}</span> <span class="price-circle">9</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="pro-same-action pro-cart">
-                                                                                <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
+                                                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
                                                                             </div>
-                                                                            <div class="pro-same-action pro-quickview">
-                                                                                <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i class="pe-7s-look"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-content">
-                                                                        <div class="product-price">
-                                                                            <span class="prod-price-watchlist">$ 90.00</span> <span class="price-circle">45</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xl-5 col-md-5 col-lg-5 col-sm-6">
-                                                                <div>
-                                                                    <h3 class="account-watchlist-div"><a href="#">Breguet</a></h3>
-                                                                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
-                                                                    <p class="account-watchlist-p">Sphere Bassilica - Gray 2A7865</p>
-                                                                </div>
+                                                                        </>
+                                                                        :
+                                                                        <>
+                                                                            <div class="col-xl-5 col-md-5 col-lg-5 col-sm-6">
+                                                                                <div>
+                                                                                    <h3 class="account-watchlist-div"><a href="#">{value.name}</a></h3>
+                                                                                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
+                                                                                    <p class="account-watchlist-p">{value.name + ' ' + value.brand + ' ' + value.modelNo}</p>
+                                                                                </div>
 
-                                                                <div class="product-wrap mb-25 scroll-zoom">
-                                                                    <div class="product-img">
-                                                                        <a href="#">
-                                                                            <img class="default-img" src={require('../../assets/icons/xd/watches/watch-4.jpg')} alt="" />
-                                                                            <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-4a.jpg')} alt="" />
-                                                                        </a>
-                                                                        <span class="purple">01:16:48</span>
-                                                                        <div class="product-action">
-                                                                            <div class="pro-same-action pro-wishlist">
-                                                                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-cart">
-                                                                                <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-quickview">
-                                                                                <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i class="pe-7s-look"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-content">
+                                                                                <div class="product-wrap mb-25 scroll-zoom">
+                                                                                    <div class="product-img">
+                                                                                        <a href="#">
+                                                                                            <img class="default-img" src={'https://watchtrade-api.herokuapp.com' + value.images[0]} alt="" />
+                                                                                            <img class="hover-img" src={'https://watchtrade-api.herokuapp.com' + value.images[1]} alt="" />
+                                                                                        </a>
+                                                                                        <span class="purple">{`${new Date(value.created_at).getHours()} : ${new Date(value.created_at).getMinutes()} : ${new Date(value.created_at).getMilliseconds()}`}</span>
+                                                                                        <div class="product-action">
+                                                                                            <div class="pro-same-action pro-wishlist">
+                                                                                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
+                                                                                            </div>
+                                                                                            <div class="pro-same-action pro-cart">
+                                                                                                <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
+                                                                                            </div>
+                                                                                            <div class="pro-same-action pro-quickview">
+                                                                                                <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i class="pe-7s-look"></i></a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="product-content">
 
-                                                                        <div class="product-price">
-                                                                            <span class="prod-price-watchlist">$ 230.00</span> <span class="price-circle">9</span>
-                                                                        </div>
-                                                                    </div>
+                                                                                        <div class="product-price">
+                                                                                            <span class="prod-price-watchlist">${value.startingPrice}</span> <span class="price-circle">9</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
+                                                                            </div>
+                                                                        </>
+                                                                    }
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
-                                                            </div>
-                                                            <div class="col-xl-5 col-md-5 col-lg-5 col-sm-6">
-                                                                <div>
-                                                                    <h3 class="account-watchlist-div"><a href="#">Breguet</a></h3>
-                                                                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
-                                                                    <p class="account-watchlist-p">Sphere Bassilica - Gray 2A7865</p>
-                                                                </div>
-
-                                                                <div class="product-wrap mb-25 scroll-zoom">
-                                                                    <div class="product-img">
-                                                                        <a href="#">
-                                                                            <img class="default-img" src={require('../../assets/icons/xd/watches/watch-4.jpg')} alt="" />
-                                                                            <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-4a.jpg')} alt="" />
-                                                                        </a>
-                                                                        <span class="purple">01:16:48</span>
-                                                                        <div class="product-action">
-                                                                            <div class="pro-same-action pro-wishlist">
-                                                                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-cart">
-                                                                                <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-quickview">
-                                                                                <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i class="pe-7s-look"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-content">
-                                                                        <div class="product-price">
-                                                                            <span class="prod-price-watchlist">$ 30.00</span> <span class="price-circle">20</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xl-5 col-md-5 col-lg-5 col-sm-6">
-                                                                <div>
-                                                                    <h3 class="account-watchlist-div"><a href="#">Breguet</a></h3>
-                                                                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
-                                                                    <p class="account-watchlist-p">Sphere Bassilica - Gray 2A7865</p>
-                                                                </div>
-
-                                                                <div class="product-wrap mb-25 scroll-zoom">
-                                                                    <div class="product-img">
-                                                                        <a href="#">
-                                                                            <img class="default-img" src={require('../../assets/icons/xd/watches/watch-2.jpg')} alt="" />
-                                                                            <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-2a.jpg')} alt="" />
-                                                                        </a>
-                                                                        <span class="purple">01:16:48</span>
-                                                                        <div class="product-action">
-                                                                            <div class="pro-same-action pro-wishlist">
-                                                                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-cart">
-                                                                                <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-quickview">
-                                                                                <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i class="pe-7s-look"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-content">
-
-                                                                        <div class="product-price">
-                                                                            <span class="prod-price-watchlist">$ 320.00</span> <span class="price-circle">90</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
-                                                            </div>
-                                                            <div class="col-xl-5 col-md-5 col-lg-5 col-sm-6">
-                                                                <div>
-                                                                    <h3 class="account-watchlist-div"><a href="#">Breguet</a></h3>
-                                                                    <img class="flags" src={require('../../assets/flags/de.png')} alt="Germany Flag" />
-                                                                    <p class="account-watchlist-p">Sphere Bassilica - Gray 2A7865</p>
-                                                                </div>
-
-                                                                <div class="product-wrap mb-25 scroll-zoom">
-                                                                    <div class="product-img">
-                                                                        <a href="#">
-                                                                            <img class="default-img" src={require('../../assets/icons/xd/watches/watch-3.jpg')} alt="" />
-                                                                            <img class="hover-img" src={require('../../assets/icons/xd/watches/watch-3a.jpg')} alt="" />
-                                                                        </a>
-                                                                        <span class="pink">01:16:48</span>
-                                                                        <div class="product-action">
-                                                                            <div class="pro-same-action pro-wishlist">
-                                                                                <a title="Wishlist" href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-cart">
-                                                                                <a title="Add To Cart" href="#"><i class="pe-7s-cart"></i> Add to cart</a>
-                                                                            </div>
-                                                                            <div class="pro-same-action pro-quickview">
-                                                                                <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i class="pe-7s-look"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-content">
-                                                                        <div class="product-price">
-                                                                            <span class="prod-price-watchlist">$ 760.00</span> <span class="price-circle">13</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-1 col-md-1 col-lg-1 col-sm-1">
-                                                            </div>
-                                                        </div>
+                                                            )
+                                                        })}
                                                     </div>
                                                 </div>
                                             </div>
@@ -301,7 +188,7 @@ class Dashboard extends Component {
                     </div>
                 </div>
 
-                <Footer ChangeView={this.props.ChangeView}/>
+                <Footer ChangeView={this.props.ChangeView} />
             </>
         );
     }

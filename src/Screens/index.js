@@ -44,7 +44,7 @@ class MainApplication extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      screen: "Dashboard",
+      screen: "AccountListing",
       email: "",
       password: "",
       loginModal: false
@@ -113,7 +113,7 @@ class MainApplication extends Component {
 
   }
   submitForm = async () => {
-    var cookie = new Cookie();
+
     if (this.state.email !== "" && this.state.password !== "") {
       let res = await LoginPost(this.state.email, this.state.password).then(resp =>
         resp.json().then(data => ({
@@ -123,13 +123,14 @@ class MainApplication extends Component {
           console.log(res.data.user);
           if (res) {
             if (res.status === 200) {
+              var cookie = new Cookie();
               this.setState({ loginModal: false })
               await localForage.setItem('userDetail', JSON.stringify(res.data.user));
               var userCookie = {
                 accessToken: res.data.token,
                 refreshToken: ""
               };
-              cookie.set("user", JSON.stringify(userCookie));
+              await localForage.setItem("accessToken", JSON.stringify(res.data.token));
               // localStorage.setItem('userDetail', JSON.stringify(res));
               console.log(res);
               toast.success('Login Successfully')
