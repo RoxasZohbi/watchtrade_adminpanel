@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
+import DateTimePicker from 'react-datetime-picker';
+
 
 import { Link  } from 'react-router-dom';
 import Axios from "../AxiosService";
@@ -15,11 +16,19 @@ import {
   Col,
   Table,
 } from "react-bootstrap";
+var qs = require('qs');
 function ProductManage(props) {
   const [product, setProduct] = useState({
-    "userId": "", "name": "", "brand": "", "modelNo":"", "bidHistory": []
+    "userId": "", 
+    "name": "", 
+    "brand": "", 
+    "modelNo":"", 
+    "bidHistory": [], 
+    "auctionExpireAt":new Date(), 
+    "startingPrice": 0, 
+    "status": "pending",
+    "description": ""
   });
-
   useEffect(() => {    
     Axios.get('/products/?_id='+props.match.params.id)
         .then(async response => {
@@ -31,6 +40,24 @@ function ProductManage(props) {
             // console.error('There was an error!', error);
         });
   }, []);
+  const setProductState = (key, value)=>{
+    let _product = Object.assign({}, product)
+    _product[key] = value  
+    return _product
+  }
+  const formSubmission = (e)=>{
+    // e.preventDefault()
+    console.log(product)
+    Axios.post('/products/update', {data: qs.stringify(product)})
+    .then(async response => {
+      console.log(response.data)
+      // setProduct(response.data[0])
+    })
+    .catch(error => {
+        // this.setState({ errorMessage: error.toString() });
+        // console.error('There was an error!', error);
+    });
+  }
   return (
     <>
       <Container fluid>
@@ -58,7 +85,7 @@ function ProductManage(props) {
                       <Form.Group>
                         <label htmlFor="exampleInputEmail1"> Name </label>
                         <Form.Control placeholder="Name" value={product.name} type="text"
-                          onChange={(e)=>setProduct({name:e.targer.value})}
+                          onChange={(e)=>setProduct(setProductState("name",e.target.value))}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -66,7 +93,7 @@ function ProductManage(props) {
                       <Form.Group>
                         <label htmlFor="exampleInputEmail1"> Brand </label>
                         <Form.Control placeholder="Brand" value={product.brand} type="text"
-                          onChange={(e)=>setProduct({brand:e.targer.value})}
+                          onChange={(e)=>setProduct(setProductState("brand",e.target.value))}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -74,8 +101,39 @@ function ProductManage(props) {
                       <Form.Group>
                         <label htmlFor="exampleInputEmail1"> Model Number </label>
                         <Form.Control placeholder="Model Number" value={product.modelNo} type="text"
-                          onChange={(e)=>setProduct({modelNo:e.targer.value})}
+                          onChange={(e)=>setProduct(setProductState("modelNo",e.target.value))}
                         ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="4">
+                      <Form.Group>
+                        <label htmlFor="exampleInputEmail1"> Auction Expire at </label>
+                        <DateTimePicker
+                          onChange={(e)=>setProduct(setProductState("auctionExpireAt",e.target.value))}
+                          value={ new Date(product.auctionExpireAt) }
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="4">
+                      <Form.Group>
+                        <label htmlFor="exampleInputEmail1"> Starting Amount($) </label>
+                        <Form.Control placeholder="Model Number" value={product.startingPrice} type="number"
+                          onChange={(e)=>setProduct(setProductState("startingPrice",e.target.value))}
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="4">
+                      <Form.Group controlId="exampleForm.SelectCustom">
+                        <Form.Label>Status</Form.Label>
+                        <Form.Control as="select" custom 
+                          value={product.status} 
+                          onChange={(e)=>setProduct(setProductState("status",e.target.value))}>
+                          <option value="pending">pending</option>
+                          <option value="live">live</option>
+                          <option value="finished">finished</option>
+                          <option value="deactivate">deactivate</option>
+                          <option value="rejected">rejected</option>
+                        </Form.Control>
                       </Form.Group>
                     </Col>
                   </Row>
@@ -87,35 +145,29 @@ function ProductManage(props) {
                             editor={ ClassicEditor }
                             data={product.description}
                             config={{
-                              // Enable the "Insert image" button in the toolbar.
-                              // toolbar: [ 'uploadImage'],
                               ckfinder: {
-                                  // Upload the images to the server using the CKFinder QuickUpload command.
                                   uploadUrl: 'https://example.com/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json'
                               }
-                          } }
+                            } }
                             onReady={ editor => {
-                                // You can store the "editor" and use when it is needed.
-                                console.log( 'Editor is ready to use!', editor );
+                              console.log( 'Editor is ready to use!', editor );
                             } }
                             onChange={ ( event, editor ) => {
-                                const data = editor.getData();
-                                console.log( { event, editor, data } );
+                              const data = editor.getData();
+                              console.log( { event, editor, data } );
+                              if(product.description!=""){
+                                setProduct(setProductState("description",data))
+                              }
                             } }
-                            // onBlur={ ( event, editor ) => {
-                            //     console.log( 'Blur.', editor );
-                            // } }
-                            // onFocus={ ( event, editor ) => {
-                            //     console.log( 'Focus.', editor );
-                            // } }
                         />
                       </Form.Group>
                     </Col>
                   </Row>
                   <Button
                     className="btn-fill pull-right"
-                    type="submit"
+                    type="button"
                     variant="info"
+                    onClick={()=>formSubmission()}
                   >
                     Update Profile
                   </Button>
