@@ -39,18 +39,18 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/products",
-    name: "Products",
-    icon: "nc-icon nc-watch-time",
-    component: ViewAllProducts,
-    layout: "/admin",
-  },
-  {
-    type: "innerPage",
     path: "/products/update/:id",
     name: "Products",
     icon: "nc-icon nc-watch-time",
     component: ProductManage,
+    layout: "/admin",
+    type: "innerPage",
+  },
+  {
+    path: "/products",
+    name: "Products",
+    icon: "nc-icon nc-watch-time",
+    component: ViewAllProducts,
     layout: "/admin",
   },
   {

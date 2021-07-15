@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link  } from 'react-router-dom';
-
-
-// react-bootstrap components
-// import Badge from 'react-bootstrap/Badge'
+import Axios from "../AxiosService";
 import {
   Badge,
   Button,
@@ -15,8 +12,6 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-
-import Axios from "../AxiosService";
 
 function TableList() {
   const [products, setProducts] = useState([]);

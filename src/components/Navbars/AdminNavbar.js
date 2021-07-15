@@ -43,7 +43,7 @@ function Header() {
     }
     return "Brand";
   };
-  console.log(getBrandText())
+  
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
