@@ -27,6 +27,7 @@ import "./assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import AdminLayout from "layouts/Admin.js";
+window.$base_api = 'https://watchtrade-api.herokuapp.com'
 
 ReactDOM.render(
   <BrowserRouter>
