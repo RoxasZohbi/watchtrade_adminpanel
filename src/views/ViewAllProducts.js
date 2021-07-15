@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Link  } from 'react-router-dom';
+
+
 // react-bootstrap components
 // import Badge from 'react-bootstrap/Badge'
 import {
@@ -17,6 +20,7 @@ import Axios from "../AxiosService";
 
 function TableList() {
   const [products, setProducts] = useState([]);
+  
   useEffect(() => {
     Axios.get('/products')
         .then(async response => {
@@ -63,20 +67,21 @@ function TableList() {
                       <td>$ {product.startingPrice}</td>
                       {/* 'pending', 'live', 'finished', 'deactivate', 'rejected' */}
                       <td><Badge variant={
-                        product.status=="live"?"success":
-                        product.status=="pending"?"warning":
-                        product.status=="finished"?"secondary":
-                        product.status=="deactivate"?"danger":
-                        product.status=="rejected"?"danger":"light"}>{product.status}</Badge></td>
+                            product.status=="live"?"success":
+                            product.status=="pending"?"warning":
+                            product.status=="finished"?"secondary":
+                            product.status=="deactivate"?"danger":
+                            product.status=="rejected"?"danger":"light"
+                          }>{product.status}</Badge></td>
                       <td>
-                        <Link to={"/products/update"+product._id}>
-                          <Button variant="info">
-                            Update
-                          </Button>
-                        </Link>
+                        <Link to={"/admin/products/update/"+product._id}>Update</Link>
+
+                        {/* <Button variant="info" onClick={()=>history.push("/update/"+product._id)}>
+                          Update
+                        </Button>
                         <Button variant="danger">
                           Delete
-                        </Button>
+                        </Button> */}
                       </td>
                     </tr>
                   ))}

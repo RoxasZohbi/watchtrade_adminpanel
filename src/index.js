@@ -19,6 +19,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import auth from "./auth";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/animate.min.css";
@@ -32,8 +33,20 @@ window.$base_api = 'https://watchtrade-api.herokuapp.com'
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Route path="/admin" render={(props) =>{ 
+        if (auth.isAuthenticated()) {
+          return <AdminLayout {...props} />
+        }else{
+          window.location.href = 'http://domain.com';
+        }
+      }} />
+      <Route exact path="/login/:token" render={(props) =>{ 
+        let token = props.match.params.token
+        auth.login(token,()=>{
+          window.location.href = '/admin/dashboard';            
+        })          
+      }}/>
+      <Redirect exact from="/" to="/admin/dashboard" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

@@ -19,6 +19,8 @@ import Dashboard        from "views/Dashboard";
 import ViewAllProducts  from "views/ViewAllProducts";
 import ViewAllOrders    from "views/ViewAllOrders";
 import ViewAllUsers     from "views/ViewAllUsers";
+import ProductManage     from "views/ProductManage";
+
 // import UserProfile from "views/UserProfile.js";
 // import TableList from "views/TableList.js";
 // import Typography from "views/Typography.js";
@@ -41,6 +43,14 @@ const dashboardRoutes = [
     name: "Products",
     icon: "nc-icon nc-watch-time",
     component: ViewAllProducts,
+    layout: "/admin",
+  },
+  {
+    type: "innerPage",
+    path: "/products/update/:id",
+    name: "Products",
+    icon: "nc-icon nc-watch-time",
+    component: ProductManage,
     layout: "/admin",
   },
   {
